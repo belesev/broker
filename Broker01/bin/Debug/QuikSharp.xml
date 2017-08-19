@@ -1,0 +1,3231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuikSharp</name>
+    </assembly>
+    <members>
+        <member name="T:QuikSharp.CandleFunctions">
+            <summary>
+            Функции для получения свечей
+            </summary>
+        </member>
+        <member name="E:QuikSharp.CandleFunctions.NewCandle">
+            <summary>
+            Событие получения новой свечи. Для срабатывания необходимо подписаться с помощью метода Subscribe.
+            </summary>
+        </member>
+        <member name="M:QuikSharp.CandleFunctions.GetAllCandles(System.String)">
+            <summary>
+            Функция предназначена для получения информации о свечках по идентификатору (заказ данных для построения графика плагин не осуществляет, поэтому для успешного доступа нужный график должен быть открыт). Возвращаются все доступные свечки.
+            </summary>
+            <param name="graphicTag">Строковый идентификатор графика или индикатора</param>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.CandleFunctions.GetCandles(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Функция предназначена для получения информации о свечках по идентификатору (заказ данных для построения графика плагин не осуществляет, поэтому для успешного доступа нужный график должен быть открыт).   
+            </summary>
+            <param name="graphicTag">Строковый идентификатор графика или индикатора</param>
+            <param name="line">Номер линии графика или индикатора. Первая линия имеет номер 0</param>
+            <param name="first">Индекс первой свечки. Первая (самая левая) свечка имеет индекс 0</param>
+            <param name="count">Количество запрашиваемых свечек</param>
+            <returns></returns>
+        </member>
+        <member name="T:QuikSharp.IClassFunctions">
+            <summary>
+            Функции для обращения к спискам доступных параметров
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IClassFunctions.GetClassesList">
+            <summary>
+            Функция предназначена для получения списка кодов классов, переданных с сервера в ходе сеанса связи.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.IClassFunctions.GetClassInfo(System.String)">
+            <summary>
+            Функция предназначена для получения информации о классе. 
+            </summary>
+            <param name="classID"></param>
+        </member>
+        <member name="M:QuikSharp.IClassFunctions.GetSecurityInfo(System.String,System.String)">
+            <summary>
+            Функция предназначена для получения информации по бумаге. 
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IClassFunctions.GetSecurityInfo(QuikSharp.ISecurity)">
+            <summary>
+            Функция предназначена для получения информации по бумаге. 
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IClassFunctions.GetClassSecurities(System.String)">
+            <summary>
+            Функция предназначена для получения списка кодов бумаг для списка классов, заданного списком кодов.
+            </summary>
+        </member>
+        <member name="T:QuikSharp.ClassFunctions">
+            <summary>
+            Функции для обращения к спискам доступных параметров
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.Candle">
+            <summary>
+            Свеча
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.Low">
+            <summary>
+            Минимальная цена сделки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.Close">
+            <summary>
+            Цена закрытия
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.High">
+            <summary>
+            Максимальная цена сделки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.Open">
+            <summary>
+            Цена открытия
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.Volume">
+            <summary>
+            Объем последней сделки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.Datetime">
+            <summary>
+            Дата и время
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.Sec">
+            <summary>
+            Код инструмента.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.Class">
+            <summary>
+            Код класса.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Candle.Interval">
+            <summary>
+            Интервал подписки.
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.CandleInterval">
+            <summary>
+            Интервал запрашиваемого графика
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.TICK">
+            <summary>
+            Тиковые данные
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M1">
+            <summary>
+            1 минута
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M2">
+            <summary>
+            2 минуты
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M3">
+            <summary>
+            3 минуты
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M4">
+            <summary>
+            4 минуты
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M5">
+            <summary>
+            5 минут
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M6">
+            <summary>
+            6 минут
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M10">
+            <summary>
+            10 минут
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M15">
+            <summary>
+            15 минут
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M20">
+            <summary>
+            20 минут
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.M30">
+            <summary>
+            30 минут
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.H1">
+            <summary>
+            1 час
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.H2">
+            <summary>
+            2 часа
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.H4">
+            <summary>
+            4 часа
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.D1">
+            <summary>
+            1 день
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.W1">
+            <summary>
+            1 неделя
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.CandleInterval.MN">
+            <summary>
+            1 месяц
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.FuturesClientHolding">
+            <summary>
+            Описание параметров Таблицы позиций по клиентским счетам (фьючерсы): 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.firmId">
+            <summary>
+            Идентификатор фирмы
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.trdAccId">
+            <summary>
+            Торговый счет
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.secCode">
+            <summary>
+            Код фьючерсного контракта
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:QuikSharp.DataStructures.FuturesClientHolding.type" -->
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.startBuy">
+            <summary>
+            Входящие длинные позиции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.startSell">
+            <summary>
+            Входящие короткие позиции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.startNet">
+            <summary>
+            Входящие чистые позиции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.todayBuy">
+            <summary>
+            Текущие длинные позиции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.todaySell">
+            <summary>
+            Текущие короткие позиции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.totalNet">
+            <summary>
+            Текущие чистые позиции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.openBuys">
+            <summary>
+            Активные на покупку
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.openSells">
+            <summary>
+            Активные на продажу
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.cbPlUsed">
+            <summary>
+            Оценка текущих чистых позиций
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.cbpPPlanned">
+            <summary>
+            Плановые чистые позиции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.varMargin">
+            <summary>
+            Вариационная маржа
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.avrPosnPrice">
+            <summary>
+            Эффективная цена позиций
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.positionValue">
+            <summary>
+            Стоимость позиций
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.realVarMargin">
+            <summary>
+            Реально начисленная в ходе клиринга вариационная маржа. 
+            Отображается с точностью до 2 двух знаков. 
+            При этом, в поле «varmargin» транслируется вариационная маржа, рассчитанная с учетом установленных границ изменения цены
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.FuturesClientHolding.totalVarMargin">
+            <summary>
+            Суммарная вариационная маржа по итогам основного клиринга начисленная по всем позициям. 
+            Отображается с точностью до 2 двух знаков
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.IWithLuaTimeStamp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.IWithLuaTimeStamp.LuaTimeStamp">
+            <summary>
+            Lua timestamp
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.ParamTable">
+            <summary>
+            Таблица с параметрами для функции getParamEx
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.ParamTable.ParamType">
+            <summary>
+            Тип данных параметра, используемый в Таблице текущих значений параметров. Возможные значения: 
+            «1» - DOUBLE ,
+            «2» - LONG, 
+            «3» - CHAR, 
+            «4» - перечислимый тип, 
+            «5» - время, 
+            «6» - дата 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.ParamTable.ParamValue">
+            <summary>
+            Значение параметра. Для param_type = 3 значение параметра равно «0», в остальных случаях – числовое представление.
+            Для перечислимых типов значение равно порядковому значению перечисления 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.ParamTable.ParamImage">
+            <summary>
+            Строковое значение параметра, аналогичное его представлению в таблице. 
+            В строковом представлении учитываются разделители разрядов, разделители целой и дробной части. 
+            Для перечислимых типов выводятся соответствующие им строковые значения 
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.AllTrade">
+            <summary>
+            Таблица с параметрами обезличенной сделки 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.TradeNum">
+            <summary>
+            Номер сделки в торговой системе
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Flags">
+            <summary>
+            Набор битовых флагов:
+            бит 0 (0x1)  Сделка на продажу  
+            бит 1 (0x2)  Сделка на покупку  
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Price">
+            <summary>
+            Цена
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Qty">
+            <summary>
+            Количество бумаг в последней сделке в лотах
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Value">
+            <summary>
+            Объем в денежных средствах
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Accruedint">
+            <summary>
+            Накопленный купонный доход
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Yield">
+            <summary>
+            Доходность
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Settlecode">
+            <summary>
+            Код расчетов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Reporate">
+            <summary>
+            Ставка РЕПО (%)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Repovalue">
+            <summary>
+            Сумма РЕПО
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Repo2Value">
+            <summary>
+            Объем выкупа РЕПО
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Repoterm">
+            <summary>
+            Срок РЕПО в днях
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.SecCode">
+            <summary>
+            Код бумаги заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.ClassCode">
+            <summary>
+            Код класса
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Datetime">
+            <summary>
+            Дата и время 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.AllTrade.Period">
+            <summary>
+            Период торговой сессии. Возможные значения:
+            «0» – Открытие; 
+            «1» – Нормальный; 
+            «2» – Закрытие 
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.State">
+            <summary>
+            Состояние заявки или стоп-заявки
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.State.Active">
+            <summary>
+            Активна
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.State.Completed">
+            <summary>
+            Исполнена
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.State.Canceled">
+            <summary>
+            Снята
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.Transaction.Order">
+            <summary>
+            Описание параметров Таблицы заявок
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.OrderNum">
+            <summary>
+            Номер заявки в торговой системе
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Flags">
+            <summary>
+            Набор битовых флагов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Comment">
+            <summary>
+            Поручение/комментарий, обычно: код клиента/номер поручения
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.UserId">
+            <summary>
+            Идентификатор трейдера
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.FirmId">
+            <summary>
+            Идентификатор фирмы
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Account">
+            <summary>
+            Торговый счет
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Price">
+            <summary>
+            Цена
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Quantity">
+            <summary>
+            Количество в лотах
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Balance">
+            <summary>
+            Остаток
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Value">
+            <summary>
+            Объем в денежных средствах
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.AccruedInterest">
+            <summary>
+            Накопленный купонный доход
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Yield">
+            <summary>
+            Доходность
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.TransID">
+            <summary>
+            Идентификатор транзакции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.ClientCode">
+            <summary>
+            Код клиента
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Price2">
+            <summary>
+            Цена выкупа
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Settlecode">
+            <summary>
+            Код расчетов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Uid">
+            <summary>
+            Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.ExchangeCode">
+            <summary>
+            Код биржи в торговой системе
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.ActivationTime">
+            <summary>
+            Время активации
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Linkedorder">
+            <summary>
+            Номер заявки в торговой системе
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Expiry">
+            <summary>
+            Дата окончания срока действия заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.SecCode">
+            <summary>
+            Код бумаги заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.ClassCode">
+            <summary>
+            Код класса заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Datetime">
+            <summary>
+            Дата и время
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.WithdrawDatetime">
+            <summary>
+            Дата и время снятия заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.BankAccID">
+            <summary>
+            Идентификатор расчетного счета/кода в клиринговой организации
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.ValueEntryType">
+            <summary>
+            Способ указания объема заявки. Возможные значения: «0» – по количеству, «1» – по объему
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Repoterm">
+            <summary>
+            Срок РЕПО, в календарных днях
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Repovalue">
+            <summary>
+            Сумма РЕПО на текущую дату. Отображается с точностью 2 знака
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Repo2Value">
+            <summary>
+            Объём сделки выкупа РЕПО. Отображается с точностью 2 знака
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.RepoValueBalance">
+            <summary>
+            Остаток суммы РЕПО за вычетом суммы привлеченных или предоставленных по сделке РЕПО денежных средств в неисполненной части заявки, по состоянию на текущую дату. Отображается с точностью 2 знака
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.StartDiscount">
+            <summary>
+            Начальный дисконт, в %
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.RejectReason">
+            <summary>
+            Причина отклонения заявки брокером
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.ExtOrderFlags">
+            <summary>
+            Битовое поле для получения специфических параметров с западных площадок
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.MinQty">
+            <summary>
+            Минимально допустимое количество, которое можно указать в заявке по данному инструменту. Если имеет значение «0», значит ограничение по количеству не задано
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.ExecType">
+            <summary>
+            Тип исполнения заявки. Если имеет значение «0», значит значение не задано
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.SideQualifier">
+            <summary>
+            Поле для получения параметров по западным площадкам. Если имеет значение «0», значит значение не задано
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.AcntType">
+            <summary>
+            Поле для получения параметров по западным площадкам. Если имеет значение «0», значит значение не задано
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Capacity">
+            <summary>
+            Поле для получения параметров по западным площадкам. Если имеет значение «0», значит значение не задано
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.PassiveOnlyOrder">
+            <summary>
+            Поле для получения параметров по западным площадкам. Если имеет значение «0», значит значение не задано
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.Operation">
+            <summary>
+            Тип операции - Buy или Sell
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.Order.State">
+            <summary>
+            Состояние заявки.
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.Transaction.TransactionReply">
+            <summary>
+            Результат OnTransReply
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.TransID">
+            <summary>
+            Пользовательский идентификатор транзакции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Status">
+            <summary>
+            Статус
+            «0» - транзакция отправлена серверу, 
+            «1» - транзакция получена на сервер QUIK от клиента, 
+            «2» - ошибка при передаче транзакции в торговую систему, поскольку отсутствует подключение шлюза Московской Биржи, повторно транзакция не отправляется, 
+            «3» - транзакция выполнена, 
+            «4» - транзакция не выполнена торговой системой, код ошибки торговой системы будет указан в поле «DESCRIPTION», 
+            «5» - транзакция не прошла проверку сервера QUIK по каким-либо критериям. Например, проверку на наличие прав у пользователя на отправку транзакции данного типа, 
+            «6» - транзакция не прошла проверку лимитов сервера QUIK, 
+            «10» - транзакция не поддерживается торговой системой. К примеру, попытка отправить «ACTION = MOVE_ORDERS» на Московской Бирже, 
+            «11» - транзакция не прошла проверку правильности электронной подписи. К примеру, если ключи, зарегистрированные на сервере, не соответствуют подписи отправленной транзакции. 
+            «12» - не удалось дождаться ответа на транзакцию, т.к. истек таймаут ожидания. Может возникнуть при подаче транзакций из QPILE. 
+            «13» - транзакция отвергнута, т.к. ее выполнение могло привести к кросс-сделке (т.е. сделке с тем же самым клиентским счетом).
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.ResultMsg">
+            <summary>
+            Сообщение
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Time">
+            <summary>
+            Время (в QLUA представлено как число)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Uid">
+            <summary>
+            Идентификатор пользователя у брокера. Для каждого брокера он свой и меняться не должен.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Flags">
+            <summary>
+            Флаги транзакции (временно не используется)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.ServerTransID">
+            <summary>
+            Идентификатор транзакции на сервере
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.OrderNum">
+            <summary>
+            Номер заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Price">
+            <summary>
+            Цена
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Quantity">
+            <summary>
+            Количество
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Balance">
+            <summary>
+            Остаток
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.FirmID">
+            <summary>
+            Идентификатор фирмы
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Account">
+            <summary>
+            Торговый счет
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.ClientCode">
+            <summary>
+            Код клиента
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.Comment">
+            <summary>
+            Поручение/комментарий, обычно: код клиента/номер поручения
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.ClassCode">
+            <summary>
+            Код класса
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.Transaction.TransactionReply.SecCode">
+            <summary>
+            Код бумаги
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.DepoLimitEx">
+            <summary>
+            На основе: http://help.qlua.org/ch4_6_11.htm
+            Запись, которую можно получить из таблицы "Лимиты по бумагам" (depo_limits)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.SecCode">
+            <summary>
+            Код бумаги
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.TrdAccId">
+            <summary>
+            Счет депо
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.FirmId">
+            <summary>
+            Идентификатор фирмы
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.ClientCode">
+            <summary>
+            Код клиента
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.OpenBalance">
+            <summary>
+            Входящий остаток по бумагам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.OpenLimit">
+            <summary>
+            Входящий лимит по бумагам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.CurrentBalance">
+            <summary>
+            Текущий остаток по бумагам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.CurrentLimit">
+            <summary>
+            Текущий лимит по бумагам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.LockedSell">
+            <summary>
+            Заблокировано на продажу количества лотов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.LockedBuy">
+            <summary>
+            Заблокированного на покупку количества лотов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.LockedBuyValue">
+            <summary>
+            Стоимость ценных бумаг, заблокированных под покупку
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.LockedSellValue">
+            <summary>
+            Стоимость ценных бумаг, заблокированных под продажу
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.AweragePositionPrice">
+            <summary>
+            Цена приобретения
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.LimitKindInt">
+            <summary>
+            Тип лимита. Возможные значения:
+            ///«0» – обычные лимиты,
+            ///значение не равное «0» – технологические лимиты
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DataStructures.DepoLimitEx.LimitKind">
+            <summary>
+            Тип лимита бумаги (Т0, Т1 или Т2).
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DataStructures.LimitKind">
+            <summary>
+            Тим лимита бумаги.
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.LimitKind.T0">
+            <summary>
+            Тип лимита T0
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.LimitKind.T1">
+            <summary>
+            Тип лимита Т1
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.LimitKind.T2">
+            <summary>
+            Тип лимита Т2
+            </summary>
+        </member>
+        <member name="F:QuikSharp.DataStructures.LimitKind.NotImplemented">
+            <summary>
+            Не учтенный в данной структуре тип лимита. Для деталей нужно смотреть свойство 'LimitKindInt'.
+            </summary>
+        </member>
+        <member name="T:QuikSharp.ClassInfo">
+            <summary>
+            Îïèñàíèå êëàññà
+            </summary>
+        </member>
+        <member name="P:QuikSharp.ClassInfo.firmid">
+            <summary>
+            Êîä ôèðìû
+            </summary>
+        </member>
+        <member name="P:QuikSharp.ClassInfo.name">
+            <summary>
+            Íàèìåíîâàíèå êëàññà
+            </summary>
+        </member>
+        <member name="P:QuikSharp.ClassInfo.code">
+            <summary>
+            Êîä êëàññà
+            </summary>
+        </member>
+        <member name="P:QuikSharp.ClassInfo.npars">
+            <summary>
+            Êîëè÷åñòâî ïàðàìåòðîâ â êëàññå
+            </summary>
+        </member>
+        <member name="P:QuikSharp.ClassInfo.nsecs">
+            <summary>
+            Êîëè÷åñòâî áóìàã â êëàññå
+            </summary>
+        </member>
+        <member name="T:QuikSharp.OrderBook">
+            <summary>
+            Стакан
+            </summary>
+        </member>
+        <member name="T:QuikSharp.OrderBook.PriceQuantity">
+            <summary>
+            Строка стакана
+            </summary>
+        </member>
+        <member name="P:QuikSharp.OrderBook.PriceQuantity.price">
+            <summary>
+            Цена покупки / продажи
+            </summary>
+        </member>
+        <member name="P:QuikSharp.OrderBook.PriceQuantity.quantity">
+            <summary>
+            Количество в лотах
+            </summary>
+        </member>
+        <member name="P:QuikSharp.OrderBook.class_code">
+            <summary>
+            Код класса
+            </summary>
+        </member>
+        <member name="P:QuikSharp.OrderBook.sec_code">
+            <summary>
+            Код бумаги
+            </summary>
+        </member>
+        <member name="P:QuikSharp.OrderBook.LuaTimeStamp">
+            <summary>
+            time in msec from lua epoch
+            </summary>
+        </member>
+        <member name="P:QuikSharp.OrderBook.server_time">
+            <summary>
+            Result of getInfoParam("SERVERTIME") right before getQuoteLevel2 call
+            </summary>
+        </member>
+        <member name="P:QuikSharp.OrderBook.bid">
+            <summary>
+            Котировки спроса (покупки)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.OrderBook.offer">
+            <summary>
+            Котировки предложений (продажи)
+            </summary>
+        </member>
+        <member name="T:QuikSharp.SecurityInfo">
+            <summary>
+            Результат getSecurityInfo
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.sec_code">
+            <summary>
+            Код инструмента
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.name">
+            <summary>
+            Наименование инструмента
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.short_name">
+            <summary>
+            Краткое наименование
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.class_code">
+            <summary>
+            Код класса
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.class_name">
+            <summary>
+            Наименование класса
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.face_value">
+            <summary>
+            Номинал
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.face_unit">
+            <summary>
+            Код валюты номинала
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.scale">
+            <summary>
+            Количество значащих цифр после запятой
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.mat_date">
+            <summary>
+            Дата погашения (в QLUA это число, но на самом деле дата записанная как YYYYMMDD),
+            поэтому здесь сохраняем просто как строку
+            </summary>
+        </member>
+        <member name="P:QuikSharp.SecurityInfo.lot_size">
+            <summary>
+            Размер лота
+            </summary>
+        </member>
+        <member name="T:QuikSharp.QuikDateTime">
+            <summary>
+            Формат даты и времени, используемый таблицах.
+            Для корректного отображения даты и времени все параметры должны быть заданы. 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.mcs">
+            <summary>
+            Микросекунды игнорируются в текущей версии.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.ms">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.sec">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.min">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.hour">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.day">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.week_day">
+            <summary>
+            Monday is 1
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.month">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikDateTime.year">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.QuikDateTime.op_Explicit(QuikSharp.QuikDateTime)~System.DateTime">
+            <summary>
+            
+            </summary>
+            <param name="qdt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.QuikDateTime.op_Explicit(System.DateTime)~QuikSharp.QuikDateTime">
+            <summary>
+            
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuikSharp.StopOrder">
+            <summary>
+            Стоп-заявка
+            На основе http://help.qlua.org/ch4_6_6.htm
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.OrderNum">
+            <summary>
+            Регистрационный номер стоп-заявки на сервере QUIK
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.TransId">
+            <summary>
+            Идентификатор транзакции.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.Account">
+            <summary>
+            Торговый счет
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.ClientCode">
+            <summary>
+            Код клиента
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.SecCode">
+            <summary>
+            Код бумаги заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.ClassCode">
+            <summary>
+            Код класса заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.StopOrderType">
+            <summary>
+            Вид стоп заявки.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.Condition">
+            <summary>
+            Направленность стоп-цены.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.ConditionPrice">
+            <summary>
+            Стоп-цена
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.Price">
+            <summary>
+            Цена
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.Quantity">
+            <summary>
+            Количество в лотах
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.FilledQuantity">
+            <summary>
+            Исполненное количество
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.ConditionPrice2">
+            <summary>
+            Стоп-лимит цена (для заявок типа «Тэйк-профит и стоп-лимит»)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.LinkedOrder">
+            <summary>
+            Номер заявки в торговой системе, зарегистрированной по наступлению условия стоп-цены.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.Flags">
+            <summary>
+            Набор битовых флагов.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.Operation">
+            <summary>
+            Заявка на продажу, иначе – на покупку.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.State">
+            <summary>
+            Состояние стоп-заявки.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.StopOrder.IsWaitingActivation">
+            <summary>
+            Стоп-заявка ожидает активации.
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderType.StopLimit">
+            <summary>
+            «1» – стоп-лимит
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderType.TakeProfit">
+             <summary>
+            «6» – тейк-профит 
+             </summary>
+        </member>
+        <member name="T:QuikSharp.Condition">
+            <summary>
+            Направленность стоп-цены. Возможные значения.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:QuikSharp.Condition.LessOrEqual" -->
+        <member name="F:QuikSharp.Condition.MoreOrEqual">
+            <summary>
+            «5» – >=
+            </summary>
+        </member>
+        <member name="T:QuikSharp.OrderTradeFlags">
+            <summary>
+            Ôëàãè äëÿ òàáëèö Çàÿâêè, Çàÿâêè íà âíåáèðæåâûå ñäåëêè, Ñäåëêè, Ñäåëêè äëÿ èñïîëíåíèÿ
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.Active">
+            <summary>
+            Çàÿâêà àêòèâíà, èíà÷å – íå àêòèâíà
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.Canceled">
+            <summary>
+            Çàÿâêà ñíÿòà. Åñëè ôëàã íå óñòàíîâëåí è çíà÷åíèå áèòà «0» ðàâíî «0», òî çàÿâêà èñïîëíåíà
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.IsSell">
+            <summary>
+            Çàÿâêà íà ïðîäàæó, èíà÷å – íà ïîêóïêó. Äàííûé ôëàã äëÿ ñäåëîê è ñäåëîê
+             äëÿ èñïîëíåíèÿ îïðåäåëÿåò íàïðàâëåíèå ñäåëêè (BUY/SELL)
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.IsLimit">
+            <summary>
+            Çàÿâêà ëèìèòèðîâàííàÿ, èíà÷å – ðûíî÷íàÿ
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.AllowDiffPrice">
+            <summary>
+            Ðàçðåøèòü / çàïðåòèòü ñäåëêè ïî ðàçíûì öåíàì
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.FillOrKill">
+            <summary>
+            Èñïîëíèòü çàÿâêó íåìåäëåííî èëè ñíÿòü (FILL OR KILL)
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.IsMarketMakerOrSent">
+            <summary>
+            Çàÿâêà ìàðêåò-ìåéêåðà. Äëÿ àäðåñíûõ çàÿâîê – çàÿâêà îòïðàâëåíà êîíòðàãåíòó
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.IsReceived">
+            <summary>
+            Äëÿ àäðåñíûõ çàÿâîê – çàÿâêà ïîëó÷åíà îò êîíòðàãåíòà
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.IsKillBalance">
+            <summary>
+            Ñíÿòü îñòàòîê
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OrderTradeFlags.Iceberg">
+            <summary>
+            Àéñáåðã-çàÿâêà
+            </summary>
+        </member>
+        <member name="T:QuikSharp.Trade">
+            <summary>
+            Описание параметров Таблицы сделок 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.TradeNum">
+            <summary>
+            Номер сделки в торговой системе
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.OrderNum">
+            <summary>
+            Номер заявки в торговой системе
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Comment">
+            <summary>
+            Поручение/комментарий, обычно: код клиента/номер поручения
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.UserId">
+            <summary>
+            Идентификатор трейдера
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.FirmId">
+            <summary>
+            Идентификатор дилера
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Account">
+            <summary>
+            Торговый счет
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Price">
+            <summary>
+            Цена
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Quantity">
+            <summary>
+            Количество бумаг в последней сделке в лотах
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Value">
+            <summary>
+            Объем в денежных средствах
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.AccruedInterest">
+            <summary>
+            Накопленный купонный доход
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Yield">
+            <summary>
+            Доходность
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.SettleCode">
+            <summary>
+            Код расчетов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.CpFirmId">
+            <summary>
+            Код фирмы партнера
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Flags">
+            <summary>
+            Набор битовых флагов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Price2">
+            <summary>
+            Цена выкупа
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.RepoRate">
+            <summary>
+            Ставка РЕПО (%)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.ClientCode">
+            <summary>
+            Код клиента
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Accrued2">
+            <summary>
+            Доход (%) на дату выкупа
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.RepoValue">
+            <summary>
+            Сумма РЕПО
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Repo2Value">
+            <summary>
+            Объем выкупа РЕПО
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.StartDiscount">
+            <summary>
+            Начальный дисконт (%)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.LowerDiscount">
+            <summary>
+            Нижний дисконт (%)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.UpperDiscount">
+            <summary>
+            Верхний дисконт (%)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.BlockSecurities">
+            <summary>
+            Блокировка обеспечения («Да»/«Нет»)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.ClearingComission">
+            <summary>
+            Клиринговая комиссия (ММВБ)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.ExchangeComission">
+            <summary>
+            Комиссия Фондовой биржи (ММВБ)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.TechCenterComission">
+            <summary>
+            Комиссия Технического центра (ММВБ)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.SettleDate">
+            <summary>
+            Дата расчетов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.SettleCurrency">
+            <summary>
+            Валюта расчетов
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.TradeCurrency">
+            <summary>
+            Валюта
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.ExchangeCode">
+            <summary>
+            Код биржи в торговой системе
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.StationID">
+            <summary>
+            Идентификатор рабочей станции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.SecCode">
+            <summary>
+            Код бумаги заявки
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.ClassCode">
+            <summary>
+            Код класса
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.QuikDateTime">
+            <summary>
+            Дата и время 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.BankAccID">
+            <summary>
+            Идентификатор расчетного счета/кода в клиринговой организации
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.BrokerComission">
+            <summary>
+            Комиссия брокера. Отображается с точностью до 2 двух знаков. Поле зарезервировано для будущего использования.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.LinkedTrade">
+            <summary>
+            Номер витринной сделки в Торговой Системе для сделок РЕПО с ЦК и SWAP
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Trade.Period">
+            <summary>
+            Период торговой сессии. Возможные значения: «0» – Открытие; «1» – Нормальный; «2» – Закрытие
+            </summary>
+        </member>
+        <member name="T:QuikSharp.Transaction">
+            <summary>
+            Ôîðìàò .tri-ôàéëà ñ ïàðàìåòðàìè òðàíçàêöèé
+            Àäîïòèðîâàííûé ïîä QLua
+            </summary>
+        </member>
+        <member name="E:QuikSharp.Transaction.OnTransReply">
+            <summary>
+            Ôóíêöèÿ âûçûâàåòñÿ òåðìèíàëîì QUIK ïðè ïîëó÷åíèè îòâåòà íà òðàíçàêöèþ ïîëüçîâàòåëÿ. 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.TransactionReply">
+            <summary>
+            TransactionReply
+            </summary>
+        </member>
+        <member name="E:QuikSharp.Transaction.OnOrder">
+            <summary>
+            Ôóíêöèÿ âûçûâàåòñÿ òåðìèíàëîì QUIK ïðè ïîëó÷åíèè íîâîé çàÿâêè èëè ïðè èçìåíåíèè ïàðàìåòðîâ ñóùåñòâóþùåé çàÿâêè.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.Orders">
+            <summary>
+            Orders
+            </summary>
+        </member>
+        <member name="E:QuikSharp.Transaction.OnTrade">
+            <summary>
+            Ôóíêöèÿ âûçûâàåòñÿ òåðìèíàëîì QUIK ïðè ïîëó÷åíèè ñäåëêè. 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.Trades">
+            <summary>
+            Trades
+            </summary>
+        </member>
+        <member name="M:QuikSharp.Transaction.IsComepleted">
+            <summary>
+            Òðàíçàêöèÿ èñïîëíåíà
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:QuikSharp.Transaction.ErrorMessage">
+            <summary>
+            Error message returned by sendTransaction
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.CLASSCODE">
+            <summary>
+            Êîä êëàññà, ïî êîòîðîìó âûïîëíÿåòñÿ òðàíçàêöèÿ, íàïðèìåð TQBR. Îáÿçàòåëüíûé ïàðàìåòð
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.SECCODE">
+            <summary>
+            Êîä èíñòðóìåíòà, ïî êîòîðîìó âûïîëíÿåòñÿ òðàíçàêöèÿ, íàïðèìåð SBER
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.ACTION">
+            <summary>
+            Âèä òðàíçàêöèè, èìåþùèé îäíî èç ñëåäóþùèõ çíà÷åíèé:
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.FIRM_ID">
+            <summary>
+            Èäåíòèôèêàòîð ó÷àñòíèêà òîðãîâ (êîä ôèðìû)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.ACCOUNT">
+            <summary>
+            Íîìåð ñ÷åòà Òðåéäåðà. Ïàðàìåòð îáÿçàòåëåí ïðè «ACTION» = «KILL_ALL_FUTURES_ORDERS». Ïàðàìåòð ÷óâñòâèòåëåí ê âåðõíåìó/íèæíåìó ðåãèñòðó ñèìâîëîâ.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.CLIENT_CODE">
+            <summary>
+            20-òè ñèìâîëüíîå ñîñòàâíîå ïîëå, ìîæåò ñîäåðæàòü êîä êëèåíòà è òåêñòîâûé êîììåíòàðèé ñ òåì æå ðàçäåëèòåëåì, ÷òî è ïðè ââîäå çàÿâêè âðó÷íóþ. Ïàðàìåòð èñïîëüçóåòñÿ òîëüêî äëÿ ãðóïïîâûõ òðàíçàêöèé. Íåîáÿçàòåëüíûé ïàðàìåòð
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.QUANTITY">
+            <summary>
+            Êîëè÷åñòâî ëîòîâ â çàÿâêå, îáÿçàòåëüíûé ïàðàìåòð
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.PRICE">
+            <summary>
+            Öåíà çàÿâêè, çà åäèíèöó èíñòðóìåíòà. Îáÿçàòåëüíûé ïàðàìåòð. 
+            Ïðè âûñòàâëåíèè ðûíî÷íîé çàÿâêè (TYPE=M) íà Ñðî÷íîì ðûíêå FORTS 
+            íåîáõîäèìî óêàçûâàòü çíà÷åíèå öåíû – óêàæèòå íàèõóäøóþ 
+            (ìèíèìàëüíî èëè ìàêñèìàëüíî âîçìîæíóþ – â çàâèñèìîñòè îò íàïðàâëåííîñòè), 
+            çàÿâêà âñå ðàâíî áóäåò èñïîëíåíà ïî ðûíî÷íîé öåíå. Äëÿ äðóãèõ ðûíêîâ ïðè 
+            âûñòàâëåíèè ðûíî÷íîé çàÿâêè óêàæèòå price= 0.
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.OPERATION">
+            <summary>
+            Íàïðàâëåíèå çàÿâêè, îáÿçàòåëüíûé ïàðàìåòð. Çíà÷åíèÿ: «S» – ïðîäàòü, «B» – êóïèòü
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.TRANS_ID">
+            <summary>
+            Óíèêàëüíûé èäåíòèôèêàöèîííûé íîìåð çàÿâêè, çíà÷åíèå îò 1 äî 2 294 967 294
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.TYPE">
+            <summary>
+            Òèï çàÿâêè, íåîáÿçàòåëüíûé ïàðàìåòð. 
+            Çíà÷åíèÿ: «L» – ëèìèòèðîâàííàÿ (ïî óìîë÷àíèþ), «M» – ðûíî÷íàÿ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.MARKET_MAKER_ORDER">
+            <summary>
+            Ïðèçíàê òîãî, ÿâëÿåòñÿ ëè çàÿâêà çàÿâêîé Ìàðêåò-Ìåéêåðà. Âîçìîæíûå çíà÷åíèÿ: «YES» èëè «NO». Çíà÷åíèå ïî óìîë÷àíèþ (åñëè ïàðàìåòð îòñóòñòâóåò): «NO»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.EXECUTION_CONDITION">
+            <summary>
+            Óñëîâèå èñïîëíåíèÿ çàÿâêè, íåîáÿçàòåëüíûé ïàðàìåòð. Âîçìîæíûå çíà÷åíèÿ:
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.REPOVALUE">
+            <summary>
+            Îáúåì ñäåëêè ÐÅÏÎ-Ì â ðóáëÿõ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.START_DISCOUNT">
+            <summary>
+            Íà÷àëüíîå çíà÷åíèå äèñêîíòà â çàÿâêå íà ñäåëêó ÐÅÏÎ-Ì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.LOWER_DISCOUNT">
+            <summary>
+            Íèæíåå ïðåäåëüíîå çíà÷åíèå äèñêîíòà â çàÿâêå íà ñäåëêó ÐÅÏÎ-Ì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.UPPER_DISCOUNT">
+            <summary>
+            Âåðõíåå ïðåäåëüíîå çíà÷åíèå äèñêîíòà â çàÿâêå íà ñäåëêó ÐÅÏÎ-Ì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.STOPPRICE">
+            <summary>
+            Ñòîï-öåíà, çà åäèíèöó èíñòðóìåíòà. Èñïîëüçóåòñÿ òîëüêî ïðè «ACTION» = «NEW_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.STOP_ORDER_KIND">
+            <summary>
+            Òèï ñòîï-çàÿâêè. Âîçìîæíûå çíà÷åíèÿ:
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.STOPPRICE_CLASSCODE">
+            <summary>
+            Êëàññ èíñòðóìåíòà óñëîâèÿ. Èñïîëüçóåòñÿ òîëüêî ïðè «STOP_ORDER_KIND» = «CONDITION_PRICE_BY_OTHER_SEC».
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.STOPPRICE_SECCODE">
+            <summary>
+            Êîä èíñòðóìåíòà óñëîâèÿ. Èñïîëüçóåòñÿ òîëüêî ïðè «STOP_ORDER_KIND» = «CONDITION_PRICE_BY_OTHER_SEC»
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:QuikSharp.Transaction.STOPPRICE_CONDITION" -->
+        <member name="P:QuikSharp.Transaction.LINKED_ORDER_PRICE">
+            <summary>
+            Öåíà ñâÿçàííîé ëèìèòèðîâàííîé çàÿâêè. Èñïîëüçóåòñÿ òîëüêî ïðè «STOP_ORDER_KIND» = «WITH_LINKED_LIMIT_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.EXPIRY_DATE">
+            <summary>
+            Ñðîê äåéñòâèÿ ñòîï-çàÿâêè. Âîçìîæíûå çíà÷åíèÿ: «GTC» – äî îòìåíû, «TODAY» - äî îêîí÷àíèÿ òåêóùåé òîðãîâîé ñåññèè, Äàòà â ôîðìàòå «ÃÃÌÌÄÄ».
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.STOPPRICE2">
+            <summary>
+            Öåíà óñëîâèÿ «ñòîï-ëèìèò» äëÿ çàÿâêè òèïà «Òýéê-ïðîôèò è ñòîï-ëèìèò»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.MARKET_STOP_LIMIT">
+            <summary>
+            Ïðèçíàê èñïîëíåíèÿ çàÿâêè ïî ðûíî÷íîé öåíå ïðè íàñòóïëåíèè óñëîâèÿ «ñòîï-ëèìèò». Çíà÷åíèÿ «YES» èëè «NO». Ïàðàìåòð çàÿâîê òèïà «Òýéê-ïðîôèò è ñòîï-ëèìèò»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.MARKET_TAKE_PROFIT">
+            <summary>
+            Ïðèçíàê èñïîëíåíèÿ çàÿâêè ïî ðûíî÷íîé öåíå ïðè íàñòóïëåíèè óñëîâèÿ «òýéê-ïðîôèò». Çíà÷åíèÿ «YES» èëè «NO». Ïàðàìåòð çàÿâîê òèïà «Òýéê-ïðîôèò è ñòîï-ëèìèò»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.IS_ACTIVE_IN_TIME">
+            <summary>
+            Ïðèçíàê äåéñòâèÿ çàÿâêè òèïà «Òýéê-ïðîôèò è ñòîï-ëèìèò» â òå÷åíèå îïðåäåëåííîãî èíòåðâàëà âðåìåíè. Çíà÷åíèÿ «YES» èëè «NO»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.ACTIVE_FROM_TIME">
+            <summary>
+            Âðåìÿ íà÷àëà äåéñòâèÿ çàÿâêè òèïà «Òýéê-ïðîôèò è ñòîï-ëèìèò» â ôîðìàòå «××ÌÌÑÑ»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.ACTIVE_TO_TIME">
+            <summary>
+            Âðåìÿ îêîí÷àíèÿ äåéñòâèÿ çàÿâêè òèïà «Òýéê-ïðîôèò è ñòîï-ëèìèò» â ôîðìàòå «××ÌÌÑÑ»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.PARTNER">
+            <summary>
+            Êîä îðãàíèçàöèè – ïàðòíåðà ïî âíåáèðæåâîé ñäåëêå.Ïðèìåíÿåòñÿ ïðè «ACTION» = «NEW_NEG_DEAL», «ACTION» = «NEW_REPO_NEG_DEAL» èëè «ACTION» = «NEW_EXT_REPO_NEG_DEAL»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.ORDER_KEY">
+            <summary>
+            Íîìåð çàÿâêè, ñíèìàåìîé èç òîðãîâîé ñèñòåìû. Ïðèìåíÿåòñÿ ïðè «ACTION» = «KILL_ORDER» èëè «ACTION» = «KILL_NEG_DEAL» èëè «ACTION» = «KILL_QUOTE»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.STOP_ORDER_KEY">
+            <summary>
+            Íîìåð ñòîï-çàÿâêè, ñíèìàåìîé èç òîðãîâîé ñèñòåìû. Ïðèìåíÿåòñÿ òîëüêî ïðè «ACTION» = «KILL_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.SETTLE_CODE">
+            <summary>
+            Êîä ðàñ÷åòîâ ïðè èñïîëíåíèè âíåáèðæåâûõ çàÿâîê
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.PRICE2">
+            <summary>
+            Öåíà âòîðîé ÷àñòè ÐÅÏÎ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.REPOTERM">
+            <summary>
+            Ñðîê ÐÅÏÎ. Ïàðàìåòð ñäåëîê ÐÅÏÎ-Ì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.REPORATE">
+            <summary>
+            Ñòàâêà ÐÅÏÎ, â ïðîöåíòàõ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.BLOCK_SECURITIES">
+            <summary>
+            Ïðèçíàê áëîêèðîâêè áóìàã íà âðåìÿ îïåðàöèè ÐÅÏÎ («YES», «NO»)
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.REFUNDRATE">
+            <summary>
+            Ñòàâêà ôèêñèðîâàííîãî âîçìåùåíèÿ, âûïëà÷èâàåìîãî â ñëó÷àå íåèñïîëíåíèÿ âòîðîé ÷àñòè ÐÅÏÎ, â ïðîöåíòàõ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.Comment">
+            <summary>
+            Òåêñòîâûé êîììåíòàðèé, óêàçàííûé â çàÿâêå - ïîðó÷åíèå (brokerref in Trades/Orders). 
+            Èñïîëüçóåòñÿ ïðè ñíÿòèè ãðóïïû çàÿâîê
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.LARGE_TRADE">
+            <summary>
+            Ïðèçíàê êðóïíîé ñäåëêè (YES/NO). Ïàðàìåòð âíåáèðæåâîé ñäåëêè
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.CURR_CODE">
+            <summary>
+            Êîä âàëþòû ðàñ÷åòîâ ïî âíåáèðæåâîé ñäåëêè, íàïðèìåð «SUR» – ðóáëè ÐÔ, «USD» – äîëëàðû ÑØÀ. Ïàðàìåòð âíåáèðæåâîé ñäåëêè
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.FOR_ACCOUNT">
+            <summary>
+            Ëèöî, îò èìåíè êîòîðîãî è çà ÷åé ñ÷åò ðåãèñòðèðóåòñÿ ñäåëêà (ïàðàìåòð âíåáèðæåâîé ñäåëêè). Âîçìîæíûå çíà÷åíèÿ:
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.SETTLE_DATE">
+            <summary>
+            Äàòà èñïîëíåíèÿ âíåáèðæåâîé ñäåëêè
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.KILL_IF_LINKED_ORDER_PARTLY_FILLED">
+            <summary>
+            Ïðèçíàê ñíÿòèÿ ñòîï-çàÿâêè ïðè ÷àñòè÷íîì èñïîëíåíèè ñâÿçàííîé ëèìèòèðîâàííîé çàÿâêè. Èñïîëüçóåòñÿ òîëüêî ïðè «STOP_ORDER_KIND» = «WITH_LINKED_LIMIT_ORDER». Âîçìîæíûå çíà÷åíèÿ: «YES» èëè «NO»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.OFFSET">
+            <summary>
+            Âåëè÷èíà îòñòóïà îò ìàêñèìóìà (ìèíèìóìà) öåíû ïîñëåäíåé ñäåëêè. Èñïîëüçóåòñÿ ïðè «STOP_ORDER_KIND» = «TAKE_PROFIT_STOP_ORDER» èëè «ACTIVATED_BY_ORDER_TAKE_PROFIT_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.OFFSET_UNITS">
+            <summary>
+            Åäèíèöû èçìåðåíèÿ îòñòóïà. Âîçìîæíûå çíà÷åíèÿ:
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.SPREAD">
+            <summary>
+            Âåëè÷èíà çàùèòíîãî ñïðýäà. Èñïîëüçóåòñÿ ïðè «STOP_ORDER_KIND» = «TAKE_PROFIT_STOP_ORDER» èëè ACTIVATED_BY_ORDER_TAKE_PROFIT_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.SPREAD_UNITS">
+            <summary>
+            Åäèíèöû èçìåðåíèÿ çàùèòíîãî ñïðýäà. Èñïîëüçóåòñÿ ïðè «STOP_ORDER_KIND» = «TAKE_PROFIT_STOP_ORDER» èëè «ACTIVATED_BY_ORDER_TAKE_PROFIT_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.BASE_ORDER_KEY">
+            <summary>
+            Ðåãèñòðàöèîííûé íîìåð çàÿâêè-óñëîâèÿ. Èñïîëüçóåòñÿ ïðè «STOP_ORDER_KIND» = «ACTIVATED_BY_ORDER_SIMPLE_STOP_ORDER» èëè «ACTIVATED_BY_ORDER_TAKE_PROFIT_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.USE_BASE_ORDER_BALANCE">
+            <summary>
+            Ïðèçíàê èñïîëüçîâàíèÿ â êà÷åñòâå îáúåìà çàÿâêè «ïî èñïîëíåíèþ» èñïîëíåííîãî êîëè÷åñòâà áóìàã çàÿâêè-óñëîâèÿ. Âîçìîæíûå çíà÷åíèÿ: «YES» èëè «NO». Èñïîëüçóåòñÿ ïðè «STOP_ORDER_KIND» = «ACTIVATED_BY_ORDER_SIMPLE_STOP_ORDER» èëè «ACTIVATED_BY_ORDER_TAKE_PROFIT_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.ACTIVATE_IF_BASE_ORDER_PARTLY_FILLED">
+            <summary>
+            Ïðèçíàê àêòèâàöèè çàÿâêè «ïî èñïîëíåíèþ» ïðè ÷àñòè÷íîì èñïîëíåíèè çàÿâêè-óñëîâèÿ. Âîçìîæíûå çíà÷åíèÿ: «YES» èëè «NO». Èñïîëüçóåòñÿ ïðè «STOP_ORDER_KIND» = «ACTIVATED_BY_ORDER_SIMPLE_STOP_ORDER» èëè «ACTIVATED_BY_ORDER_TAKE_PROFIT_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.BASE_CONTRACT">
+            <summary>
+            Èäåíòèôèêàòîð áàçîâîãî êîíòðàêòà äëÿ ôüþ÷åðñîâ èëè îïöèîíîâ. 
+            Îáÿçàòåëüíûé ïàðàìåòð ñíÿòèÿ çàÿâîê íà ðûíêå FORTS
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.MODE">
+            <summary>
+             Ðåæèì ïåðåñòàíîâêè çàÿâîê íà ðûíêå FORTS. Ïàðàìåòð îïåðàöèè «ACTION» = «MOVE_ORDERS» Âîçìîæíûå çíà÷åíèÿ: «0» – îñòàâèòü êîëè÷åñòâî â çàÿâêàõ áåç èçìåíåíèÿ, «1» – èçìåíèòü êîëè÷åñòâî â çàÿâêàõ íà íîâûå, «2» – ïðè íåñîâïàäåíèè íîâûõ êîëè÷åñòâ ñ òåêóùèì õîòÿ áû â îäíîé çàÿâêå, îáå çàÿâêè ñíèìàþòñÿ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.FIRST_ORDER_NUMBER">
+            <summary>
+            Íîìåð ïåðâîé çàÿâêè
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.FIRST_ORDER_NEW_QUANTITY">
+            <summary>
+            Êîëè÷åñòâî â ïåðâîé çàÿâêå
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.FIRST_ORDER_NEW_PRICE">
+            <summary>
+            Öåíà â ïåðâîé çàÿâêå
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.SECOND_ORDER_NUMBER">
+            <summary>
+            Íîìåð âòîðîé çàÿâêè
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.SECOND_ORDER_NEW_QUANTITY">
+            <summary>
+            Êîëè÷åñòâî âî âòîðîé çàÿâêå
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.SECOND_ORDER_NEW_PRICE">
+            <summary>
+            Öåíà âî âòîðîé çàÿâêå
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.KILL_ACTIVE_ORDERS">
+            <summary>
+            Ïðèçíàê ñíÿòèÿ àêòèâíûõ çàÿâîê ïî äàííîìó èíñòðóìåíòó. Èñïîëüçóåòñÿ òîëüêî ïðè «ACTION» = «NEW_QUOTE». Âîçìîæíûå çíà÷åíèÿ: «YES» èëè «NO»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.NEG_TRADE_OPERATION">
+            <summary>
+            Íàïðàâëåíèå îïåðàöèè â ñäåëêå, ïîäòâåðæäàåìîé îò÷åòîì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.NEG_TRADE_NUMBER">
+            <summary>
+            Íîìåð ïîäòâåðæäàåìîé îò÷åòîì ñäåëêè äëÿ èñïîëíåíèÿ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.VOLUMEMN">
+            <summary>
+            Ëèìèò îòêðûòûõ ïîçèöèé, ïðè «Òèï ëèìèòà» = «Äåí.ñðåäñòâà» èëè «Âñåãî»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.VOLUMEPL">
+            <summary>
+            Ëèìèò îòêðûòûõ ïîçèöèé, ïðè «Òèï ëèìèòà» = «Çàëîãîâûå äåí.ñðåäñòâà»
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.KFL">
+            <summary>
+            Êîýôôèöèåíò ëèêâèäíîñòè
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.KGO">
+            <summary>
+            Êîýôôèöèåíò êëèåíòñêîãî ãàðàíòèéíîãî îáåñïå÷åíèÿ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.USE_KGO">
+            <summary>
+            Ïàðàìåòð, êîòîðûé îïðåäåëÿåò, áóäåò ëè çàãðóæàòüñÿ âåëè÷èíà ÊÃÎ ïðè çàãðóçêå ëèìèòîâ èç ôàéëà: ïðè USE_KGO=Y – âåëè÷èíà ÊÃÎ çàãðóæàåò. ïðè USE_KGO=N – âåëè÷èíà ÊÃÎ íå çàãðóæàåòñÿ. Ïðè óñòàíîâêå ëèìèòà íà Ñðî÷íîì ðûíêå Ìîñêîâñêîé Áèðæè ñ ïðèíóäèòåëüíûì ïîíèæåíèåì (ñì. Ñîçäàíèå ëèìèòà) òðåáóåòñÿ óêàçàòü USE_KGO= Y
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.CHECK_LIMITS">
+            <summary>
+            Ïðèçíàê ïðîâåðêè ïîïàäàíèÿ öåíû çàÿâêè â äèàïàçîí äîïóñòèìûõ öåí. 
+            Ïàðàìåòð Ñðî÷íîãî ðûíêà FORTS. Íåîáÿçàòåëüíûé ïàðàìåòð òðàíçàêöèé 
+            óñòàíîâêè íîâûõ çàÿâîê ïî êëàññàì «Îïöèîíû ÔÎÐÒÑ» è «ÐÏÑ: Îïöèîíû ÔÎÐÒÑ». 
+            Âîçìîæíûå çíà÷åíèÿ: «YES» - âûïîëíÿòü ïðîâåðêó, «NO» - íå âûïîëíÿòü
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.MATCHREF">
+            <summary>
+            Ññûëêà, êîòîðàÿ ñâÿçûâàåò äâå ñäåëêè ÐÅÏÎ èëè ÐÏÑ. Ñäåëêà ìîæåò áûòü çàêëþ÷åíà òîëüêî ìåæäó êîíòðàãåíòàìè, óêàçàâøèìè îäèíàêîâîå çíà÷åíèå ýòîãî ïàðàìåòðà â ñâîèõ çàÿâêàõ. Ïàðàìåòð ïðåäñòàâëÿåò ñîáîé íàáîð ïðîèçâîëüíûé íàáîð êîëè÷åñòâîì äî 10 ñèìâîëîâ (äîïóñêàþòñÿ öèôðû è áóêâû). Íåîáÿçàòåëüíûé ïàðàìåòð
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Transaction.CORRECTION">
+            <summary>
+            Ðåæèì êîððåêòèðîâêè îãðàíè÷åíèÿ ïî ôüþ÷åðñíûì ñ÷åòàì. Âîçìîæíûå çíà÷åíèÿ: «Y» - âêëþ÷åí, óñòàíîâêîé ëèìèòà èçìåíÿåòñÿ äåéñòâóþùåå çíà÷åíèå, «N» - âûêëþ÷åí (ïî óìîë÷àíèþ), óñòàíîâêîé ëèìèòà çàäàåòñÿ íîâîå çíà÷åíèå
+            </summary>
+        </member>
+        <member name="M:QuikSharp.DebugFunctions.Echo``1(``0)">
+            <summary>
+            
+            </summary>
+            <param name="msg"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.DebugFunctions.DivideStringByZero">
+            <summary>
+            This method returns LuaException and demonstrates how Lua errors are caught
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.DebugFunctions.IsQuik">
+            <summary>
+            Check if running inside Quik
+            </summary>
+        </member>
+        <member name="T:QuikSharp.IPersistentStorage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IPersistentStorage.Set``1(System.String,``0)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IPersistentStorage.Get``1(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IPersistentStorage.Contains(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IPersistentStorage.Remove(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QuikSharp.EsentStorage">
+            <summary>
+            Thread-unsafe
+            </summary>
+        </member>
+        <member name="P:QuikSharp.EsentStorage.Storage">
+            <summary>
+            Useful for more advanced manipulation than IPersistentStorage
+            QuikSharp depends only on IPersistentStorage
+            </summary>
+        </member>
+        <member name="T:QuikSharp.InMemoryStorage">
+            <summary>
+            Thread-unsafe
+            </summary>
+        </member>
+        <member name="P:QuikSharp.InMemoryStorage.Storage">
+            <summary>
+            Useful for more advanced manipulation than IPersistentStorage
+            QuikSharp depends only on IPersistentStorage
+            </summary>
+        </member>
+        <member name="T:QuikSharp.ISecurity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.ISecurity.ClassCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:QuikSharp.ISecurity.SecCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QuikSharp.LuaException">
+            <summary>
+            An exception caught on Lua side with a message from Lua
+            </summary>
+        </member>
+        <member name="M:QuikSharp.LuaException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:QuikSharp.TransactionException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.TransactionException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:QuikSharp.NetworkUtils.IsConnectedNow(System.Net.Sockets.Socket)">
+            <summary>
+            The connection state of a socket is reflected in the Connected property,
+             but this property only gets updated with the last send- or receive-action. 
+            To determine the connection state before send or receive the one an only way 
+            is polling the state directly from the socket it self. The following
+             extension class will help doing this.
+            </summary>
+        </member>
+        <member name="T:QuikSharp.NotificationType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuikSharp.NotificationType.Info">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuikSharp.NotificationType.Warning">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuikSharp.NotificationType.Error">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QuikSharp.OrderFunctions">
+            <summary>
+            Класс, содержащий методы работы с заявками.
+            </summary>
+        </member>
+        <member name="M:QuikSharp.OrderFunctions.#ctor(System.Int32,QuikSharp.Quik)">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:QuikSharp.OrderFunctions.CreateOrder(QuikSharp.DataStructures.Transaction.Order)">
+            <summary>
+            Создание новой заявки.
+            </summary>
+            <param name="order">Инфомация о новой заявки, на основе которой будет сформирована транзакция.</param>
+        </member>
+        <member name="M:QuikSharp.OrderFunctions.KillOrder(QuikSharp.DataStructures.Transaction.Order)">
+            <summary>
+            Отмена заявки.
+            </summary>
+            <param name="order">Информация по заявке, которую требуется отменить.</param>
+        </member>
+        <member name="M:QuikSharp.OrderFunctions.GetOrder(System.String,System.Int64)">
+            <summary>
+            Возвращает заявку из хранилища терминала по её номеру.
+            На основе: http://help.qlua.org/ch4_5_1_1.htm
+            </summary>
+            <param name="classCode">Класс инструмента.</param>
+            <param name="orderId">Номер заявки.</param>
+            <returns></returns>
+        </member>
+        <member name="T:QuikSharp.JsonExtensions">
+            <summary>
+            Extensions for JSON.NET
+            </summary>
+        </member>
+        <member name="M:QuikSharp.JsonExtensions.FromJson``1(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.JsonExtensions.FromJson(System.String,System.Type)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.JsonExtensions.ToJson``1(``0)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.JsonExtensions.ToJsonFormatted``1(``0)">
+            <summary>
+            Returns indented JSON
+            </summary>
+        </member>
+        <member name="T:QuikSharp.SafeEnumConverter`1">
+            <summary>
+            Limits enum serialization only to defined values
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:QuikSharp.ToStringConverter`1">
+            <summary>
+            Serialize as string with ToString()
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DecimalG29ToStringConverter">
+            <summary>
+            Serialize Decimal to string without trailing zeros
+            </summary>
+        </member>
+        <member name="T:QuikSharp.HHMMSSDateTimeConverter">
+            <summary>
+            Convert DateTime to HHMMSS
+            </summary>
+        </member>
+        <member name="M:QuikSharp.JsonCreationConverter`1.Create(System.Type,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Create an instance of objectType, based properties in the JSON object
+            </summary>
+            <param name="objectType">type of object expected</param>
+            <param name="jObject">
+            contents of JSON object that will be deserialized
+            </param>
+            <returns></returns>
+        </member>
+        <member name="T:QuikSharp.ZipExtentions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.ZipExtentions.GZip(System.Byte[])">
+            <summary>
+            In-memory compress
+            </summary>
+        </member>
+        <member name="M:QuikSharp.ZipExtentions.ToZipBytes(System.String)">
+            <summary>
+            Uses UTF8 bytes to zip
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.ZipExtentions.UnGZip(System.Byte[])">
+            <summary>
+            In-memory uncompress
+            </summary>
+        </member>
+        <member name="M:QuikSharp.ZipExtentions.FromZipBytes(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="P:QuikSharp.IMessage.Id">
+            <summary>
+            Unique correlation id to match requests and responses
+            </summary>
+        </member>
+        <member name="P:QuikSharp.IMessage.Command">
+            <summary>
+            A name of a function to call for requests 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.IMessage.CreatedTime">
+            <summary>
+            Timestamp in milliseconds, same as in Lua `socket.gettime() * 1000`
+            </summary>
+        </member>
+        <member name="P:QuikSharp.IMessage.ValidUntil">
+            <summary>
+            Some messages are valid only for a short time, e.g. buy/sell orders
+            </summary>
+        </member>
+        <member name="P:QuikSharp.BaseMessage.Id">
+            <summary>
+            Unique correlation id to match requests and responses
+            </summary>
+        </member>
+        <member name="P:QuikSharp.BaseMessage.Command">
+            <summary>
+            A name of a function to call for requests 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.BaseMessage.CreatedTime">
+            <summary>
+            Timestamp in milliseconds, same as in Lua `socket.gettime() * 1000`
+            </summary>
+        </member>
+        <member name="P:QuikSharp.BaseMessage.ValidUntil">
+            <summary>
+            Some messages are valid only for a short time, e.g. buy/sell orders
+            </summary>
+        </member>
+        <member name="T:QuikSharp.Message`1">
+            <summary>
+            Default generic implementation
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Message`1.Data">
+            <summary>
+            String message
+            </summary>
+        </member>
+        <member name="T:QuikSharp.IOrderBookFunctions">
+            <summary>
+            Функции для работы со стаканом котировок
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IOrderBookFunctions.Subscribe(System.String,System.String)">
+            <summary>
+            Функция заказывает на сервер получение стакана по указанному классу и бумаге. 
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IOrderBookFunctions.Subscribe(QuikSharp.ISecurity)">
+            <summary>
+            Функция заказывает на сервер получение стакана
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IOrderBookFunctions.Unsubscribe(System.String,System.String)">
+            <summary>
+            Функция отменяет заказ на получение с сервера стакана по указанному классу и бумаге. 
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IOrderBookFunctions.Unsubscribe(QuikSharp.ISecurity)">
+            <summary>
+            Функция отменяет заказ на получение с сервера стакана
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IOrderBookFunctions.IsSubscribed(System.String,System.String)">
+            <summary>
+            Функция позволяет узнать, заказан ли с сервера стакан по указанному классу и бумаге. 
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IOrderBookFunctions.IsSubscribed(QuikSharp.ISecurity)">
+            <summary>
+            Функция позволяет узнать, заказан ли с сервера стакан
+            </summary>
+        </member>
+        <member name="T:QuikSharp.OrderBookFunctions">
+            <summary>
+            Функции для работы со стаканом котировок
+            </summary>
+        </member>
+        <member name="M:QuikSharp.OrderBookFunctions.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="port"></param>
+        </member>
+        <member name="P:QuikSharp.OrderBookFunctions.QuikService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QuikSharp.Quik">
+            <summary>
+            Quik interface in .NET
+            </summary>
+        </member>
+        <member name="F:QuikSharp.Quik.DefaultPort">
+            <summary>
+            34130
+            </summary>
+        </member>
+        <member name="M:QuikSharp.Quik.#ctor(System.Int32,QuikSharp.IPersistentStorage)">
+            <summary>
+            Quik interface in .NET constructor
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.TimeZoneInfo">
+            <summary>
+            Quik current data is all in local time. This property allows to convert it to UTC datetime
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.Storage">
+            <summary>
+            Persistent transaction storage
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.Debug">
+            <summary>
+            Debug functions
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.Events">
+            <summary>
+            Функции обратного вызова
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.Service">
+            <summary>
+            Сервисные функции
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.Class">
+            <summary>
+            Функции для обращения к спискам доступных параметров
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.OrderBook">
+            <summary>
+            Функции для работы со стаканом котировок
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.Trading">
+            <summary>
+            Функции взаимодействия скрипта Lua и Рабочего места QUIK
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.StopOrders">
+            <summary>
+            Функции для работы со стоп-заявками
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.Orders">
+            <summary>
+            Функции для работы с заявками
+            </summary>
+        </member>
+        <member name="P:QuikSharp.Quik.Candles">
+            <summary>
+            Функции для работы со свечами
+            </summary>
+        </member>
+        <member name="T:QuikSharp.VoidHandler">
+            <summary>
+            A handler for events without arguments
+            </summary>
+        </member>
+        <member name="T:QuikSharp.InitHandler">
+            <summary>
+            Обработчик события OnInit
+            </summary>
+            <param name="path">Расположение скрипта QuikSharp.lua</param>
+            <param name="port">Порт обмена данными</param>
+        </member>
+        <member name="T:QuikSharp.QuoteHandler">
+            <summary>
+            
+            </summary>
+            <param name="orderbook"></param>
+        </member>
+        <member name="T:QuikSharp.StopHandler">
+            <summary>
+            Обработчик события OnStop
+            </summary>
+        </member>
+        <member name="T:QuikSharp.AllTradeHandler">
+            <summary>
+            Обработчик события OnAllTrade
+            </summary>
+            <param name="allTrade"></param>
+        </member>
+        <member name="T:QuikSharp.TransReplyHandler">
+            <summary>
+            
+            </summary>
+            <param name="transReply"></param>
+        </member>
+        <member name="T:QuikSharp.OrderHandler">
+            <summary>
+            
+            </summary>
+            <param name="order"></param>
+        </member>
+        <member name="T:QuikSharp.TradeHandler">
+            <summary>
+            
+            </summary>
+            <param name="trade"></param>
+        </member>
+        <member name="T:QuikSharp.QuikService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.QuikService.Create(System.Int32)">
+            <summary>
+            For each port only one instance of QuikService
+            </summary>
+        </member>
+        <member name="P:QuikSharp.QuikService.IsStarted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuikSharp.QuikService._correlationId">
+            <summary>
+            Current correlation id. Use Interlocked.Increment to get a new id.
+            </summary>
+        </member>
+        <member name="F:QuikSharp.QuikService.EnvelopeQueue">
+            <summary>
+            IQuickCalls functions enqueue a message and return a task from TCS
+            </summary>
+        </member>
+        <member name="F:QuikSharp.QuikService.Responses">
+            <summary>
+            If received message has a correlation id then use its Data to SetResult on TCS and remove the TCS from the dic
+            </summary>
+        </member>
+        <member name="M:QuikSharp.QuikService.Stop">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuikSharp.QuikService.Start">
+            <summary>
+            
+            </summary>
+            <exception cref="T:System.ApplicationException">Response message id does not exists in results dictionary</exception>
+        </member>
+        <member name="M:QuikSharp.QuikService.GetNewUniqueId">
+            <summary>
+            Generate a new unique ID for current session
+            </summary>
+        </member>
+        <member name="M:QuikSharp.QuikService.InitializeCorrelationId(System.Int32)">
+            <summary>
+            Óñòàíàâëèâàåò ñòàðòîâîå çíà÷åíèå äëÿ CorrelactionId.
+            </summary>
+            <param name="startCorrelationId">Ñòàðòîâîå çíà÷åíèå.</param>
+        </member>
+        <member name="T:QuikSharp.IServiceFunctions">
+            <summary>
+            Сервисные функции
+            </summary>
+        </member>
+        <member name="M:QuikSharp.IServiceFunctions.GetWorkingFolder">
+            <summary>
+            Функция возвращает путь, по которому находится файл info.exe, исполняющий данный скрипт, без завершающего обратного слэша («\»). Например, C:\QuikFront. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.IServiceFunctions.IsConnected">
+            <summary>
+            Функция предназначена для определения состояния подключения клиентского места к серверу. Возвращает «1», если клиентское место подключено и «0», если не подключено. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.IServiceFunctions.GetScriptPath">
+            <summary>
+            Функция возвращает путь, по которому находится запускаемый скрипт, без завершающего обратного слэша («\»). Например, C:\QuikFront\Scripts 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.IServiceFunctions.GetInfoParam(QuikSharp.InfoParams)">
+            <summary>
+            Функция возвращает значения параметров информационного окна (пункт меню Связь / Информационное окно…). 
+            </summary>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.IServiceFunctions.Message(System.String,QuikSharp.NotificationType)">
+            <summary>
+            Функция отображает сообщения в терминале QUIK.
+            </summary>
+            <param name="message"></param>
+            <param name="iconType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.IServiceFunctions.InitializeCorrelationId(System.Int32)">
+            <summary>
+            Устанавливает стартовое значение для CorrelactionId.
+            </summary>
+            <param name="startCorrelationId">Стартовое значение.</param>
+        </member>
+        <member name="T:QuikSharp.ServiceFunctions">
+            <summary>
+            Service functions implementations
+            </summary>
+        </member>
+        <member name="T:QuikSharp.DepoLimit">
+            <summary>
+            При обработке изменения бумажного лимита функция возвращает таблицу Lua с параметрами
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DepoLimit.depo_limit_locked_buy_value">
+            <summary>
+            Стоимость ценных бумаг, заблокированных на покупку
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DepoLimit.depo_current_balance">
+            <summary>
+            Текущий остаток по бумагам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DepoLimit.depo_limit_locked_buy">
+            <summary>
+            Количество лотов ценных бумаг, заблокированных на покупку
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DepoLimit.depo_limit_locked">
+            <summary>
+            Заблокированное Количество лотов ценных бумаг
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DepoLimit.depo_limit_available">
+            <summary>
+            Доступное количество ценных бумаг
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DepoLimit.depo_current_limit">
+            <summary>
+            Текущий лимит по бумагам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.DepoLimit.depo_open_balance">
+            <summary>
+            Входящий остаток по бумагам
+            </summary>
+        </member>
+        <member name="T:QuikSharp.MoneyLimit">
+            <summary>
+            При обработке изменения денежного лимита функция getMoney возвращает таблицу Lua с параметрами: 
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimit.money_open_limit">
+            <summary>
+            Входящий лимит по денежным средствам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimit.money_limit_locked_nonmarginal_value">
+            <summary>
+            Стоимость немаржинальных бумаг в заявках на покупку
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimit.money_limit_locked">
+            <summary>
+            Заблокированное в заявках на покупку количество денежных средств
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimit.money_open_balance">
+            <summary>
+            Входящий остаток по денежным средствам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimit.money_current_limit">
+            <summary>
+            Текущий лимит по денежным средствам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimit.money_current_balance">
+            <summary>
+            Текущий остаток по денежным средствам
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimit.money_limit_available">
+            <summary>
+            Доступное количество денежных средств
+            </summary>
+        </member>
+        <member name="T:QuikSharp.MoneyLimitEx">
+            <summary>
+            Ëèìèòû ïî äåíåæíûì ñðåäñòâàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.money_open_limit">
+            <summary>
+            Âõîäÿùèé ëèìèò ïî äåíåæíûì ñðåäñòâàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.money_limit_locked_nonmarginal_value">
+            <summary>
+            Ñòîèìîñòü íåìàðæèíàëüíûõ áóìàã â çàÿâêàõ íà ïîêóïêó
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.money_limit_locked">
+            <summary>
+            Çàáëîêèðîâàííîå â çàÿâêàõ íà ïîêóïêó êîëè÷åñòâî äåíåæíûõ ñðåäñòâ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.money_open_balance">
+            <summary>
+            Âõîäÿùèé îñòàòîê ïî äåíåæíûì ñðåäñòâàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.money_current_limit">
+            <summary>
+            Òåêóùèé ëèìèò ïî äåíåæíûì ñðåäñòâàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.money_current_balance">
+            <summary>
+            Òåêóùèé îñòàòîê ïî äåíåæíûì ñðåäñòâàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.money_limit_available">
+            <summary>
+            Äîñòóïíîå êîëè÷åñòâî äåíåæíûõ ñðåäñòâ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.currcode">
+            <summary>
+            Êîä âàëþòû
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.tag">
+            <summary>
+            Òýã ðàñ÷åòîâ
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.firmid">
+            <summary>
+            Èäåíòèôèêàòîð ôèðìû
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.client_code">
+            <summary>
+            Êîä êëèåíòà
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.openbal">
+            <summary>
+            Âõîäÿùèé îñòàòîê ïî äåíüãàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.openlimit">
+            <summary>
+            Âõîäÿùèé ëèìèò ïî äåíüãàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.currentbal">
+            <summary>
+            Òåêóùèé îñòàòîê ïî äåíüãàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.currentlimit">
+            <summary>
+            Òåêóùèé ëèìèò ïî äåíüãàì
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.locked">
+            <summary>
+            Çàáëîêèðîâàííîå êîëè÷åñòâî
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.locked_value_coef">
+            <summary>
+            Ñòîèìîñòü àêòèâîâ â çàÿâêàõ íà ïîêóïêó íåìàðæèíàëüíûõ áóìàã
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.locked_margin_value">
+            <summary>
+            Ñòîèìîñòü àêòèâîâ â çàÿâêàõ íà ïîêóïêó ìàðæèíàëüíûõ áóìàã
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.leverage">
+            <summary>
+            Ïëå÷î
+            </summary>
+        </member>
+        <member name="P:QuikSharp.MoneyLimitEx.limit_kind">
+            <summary>
+            Òèï ëèìèòà. Âîçìîæíûå çíà÷åíèÿ:
+            «0» – îáû÷íûå ëèìèòû,
+            èíà÷å – òåõíîëîãè÷åñêèå ëèìèòû
+            </summary>
+        </member>
+        <member name="T:QuikSharp.StopOrderFunctions">
+            <summary>
+            Функции для работы со стоп-заявками
+            </summary>
+        </member>
+        <member name="M:QuikSharp.StopOrderFunctions.GetStopOrders">
+            <summary>
+            Возвращает список всех стоп-заявок.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.StopOrderFunctions.GetStopOrders(System.String,System.String)">
+            <summary>
+            Возвращает список стоп-заявок для заданного инструмента.
+            </summary>
+        </member>
+        <member name="T:QuikSharp.ITradingFunctions">
+            <summary>
+            Функции взаимодействия скрипта Lua и Рабочего места QUIK
+            getDepo - функция для получения информации по бумажным лимитам 
+            getMoney - функция для получения информации по денежным лимитам 
+            getMoneyEx - функция для получения информации по денежным лимитам указанного типа 
+            getFuturesLimit - функция для получения информации по фьючерсным лимитам 
+            getFuturesHolding - функция для получения информации по фьючерсным позициям 
+            getParamEx - функция для получения значений Таблицы текущих значений параметров 
+            getTradeDate - функция для получения даты торговой сессии 
+            sendTransaction - функция для работы с заявками 
+            CulcBuySell - функция для расчета максимально возможного количества лотов в заявке 
+            getPortfolioInfo - функция для получения значений параметров таблицы «Клиентский портфель» 
+            getPortfolioInfoEx - функция для получения значений параметров таблицы «Клиентский портфель» с учетом вида лимита 
+            getBuySellInfo - функция для получения параметров таблицы «Купить/Продать» 
+            getBuySellInfoEx - функция для получения параметров (включая вид лимита) таблицы «Купить/Продать» 
+            </summary>
+        </member>
+        <member name="M:QuikSharp.ITradingFunctions.GetDepo(System.String,System.String,System.String,System.String)">
+            <summary>
+            Функция для получения информации по бумажным лимитам
+            </summary>
+        </member>
+        <member name="M:QuikSharp.ITradingFunctions.GetDepoLimits">
+            <summary>
+            Возвращает список записей из таблицы 'Лимиты по бумагам'.
+            </summary>
+        </member>
+        <member name="M:QuikSharp.ITradingFunctions.GetDepoLimits(System.String)">
+            <summary>
+            Возвращает список записей из таблицы 'Лимиты по бумагам', отфильтрованных по коду инструмента.
+            </summary>
+            <param name="secCode">Код инструментаю</param>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.ITradingFunctions.GetMoney(System.String,System.String,System.String,System.String)">
+            <summary>
+            Функция для получения информации по денежным лимитам
+            </summary>
+            
+        </member>
+        <member name="M:QuikSharp.ITradingFunctions.GetMoneyEx(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+             функция для получения информации по денежным лимитам указанного типа
+            </summary>
+        </member>
+        <member name="M:QuikSharp.ITradingFunctions.GetParamEx(System.String,System.String,System.String)">
+            <summary>
+            функция для получения значений Таблицы текущих значений параметров
+            </summary>
+            <param name="classCode"></param>
+            <param name="secCode"></param>
+            <param name="paramName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuikSharp.ITradingFunctions.SendTransaction(QuikSharp.Transaction)">
+            <summary>
+            Функция отправляет транзакцию на сервер QUIK и сохраняет ее в словаре транзакций
+            с идентификатором trans_id. Возвращает идентификатор
+            транзакции trans_id (позитивное число) в случае успеха или индентификатор,
+            умноженный на -1 (-trans_id) (негативное число) в случае ошибки. Также в случае 
+            ошибки функция созраняет текст ошибки в свойтво ErrorMessage транзакции.
+            </summary>
+        </member>
+        <member name="T:QuikSharp.TradingFunctions">
+            <summary>
+            Функции взаимодействия скрипта Lua и Рабочего места QUIK
+            </summary>
+        </member>
+        <member name="M:QuikSharp.TradingFunctions.GetDepoLimits">
+            <summary>
+            Возвращает список всех записей из таблицы 'Лимиты по бумагам'.
+            </summary>
+        </member>
+        <member name="M:QuikSharp.TradingFunctions.GetDepoLimits(System.String)">
+            <summary>
+            Возвращает список записей из таблицы 'Лимиты по бумагам', отфильтрованных по коду инструмента.
+            </summary>
+        </member>
+        <member name="M:QuikSharp.TradingFunctions.SendTransaction(QuikSharp.Transaction)">
+            <summary>
+            Send a single transaction to Quik server
+            </summary>
+            <param name="transaction"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuikSharp.TransactionAction">
+            <summary>
+            Вид транзакции, имеющий одно из следующих значений: 
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.NEW_ORDER">
+            <summary>
+            новая заявка,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.NEW_NEG_DEAL">
+            <summary>
+            новая заявка на внебиржевую сделку,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.NEW_REPO_NEG_DEAL">
+            <summary>
+            новая заявка на сделку РЕПО,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.NEW_EXT_REPO_NEG_DEAL">
+            <summary>
+            новая заявка на сделку модифицированного РЕПО (РЕПО-М),
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.NEW_STOP_ORDER">
+            <summary>
+            новая стоп-заявка,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_ORDER">
+            <summary>
+            снять заявку,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_NEG_DEAL">
+            <summary>
+            снять заявку на внебиржевую сделку или заявку на сделку РЕПО,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_STOP_ORDER">
+            <summary>
+            снять стоп-заявку,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_ALL_ORDERS">
+            <summary>
+            снять все заявки из торговой системы,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_ALL_STOP_ORDERS">
+            <summary>
+            снять все стоп-заявки,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_ALL_NEG_DEALS">
+            <summary>
+            снять все заявки на внебиржевые сделки и заявки на сделки РЕПО,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_ALL_FUTURES_ORDERS">
+            <summary>
+            снять все заявки на рынке FORTS,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_RTS_T4_LONG_LIMIT">
+            <summary>
+            удалить лимит открытых позиций на спот-рынке RTS Standard,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_RTS_T4_SHORT_LIMIT">
+            <summary>
+            удалить лимит открытых позиций клиента по спот-активу на рынке RTS Standard,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.MOVE_ORDERS">
+            <summary>
+            переставить заявки на рынке FORTS,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.NEW_QUOTE">
+            <summary>
+            новая безадресная заявка,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.KILL_QUOTE">
+            <summary>
+            снять безадресную заявку,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.NEW_REPORT">
+            <summary>
+            новая  заявка-отчет о подтверждении транзакций в режимах РПС и РЕПО,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionAction.SET_FUT_LIMIT">
+            <summary>
+            новое ограничение по фьючерсному счету
+            </summary>
+        </member>
+        <member name="T:QuikSharp.TransactionType">
+            <summary>
+            Тип заявки, необязательный параметр.
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionType.L">
+            <summary>
+            «L» - лимитированная (по умолчанию), 
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionType.M">
+            <summary>
+            «M» – рыночная
+            </summary>
+        </member>
+        <member name="T:QuikSharp.YesOrNo">
+            <summary>
+            YES or NO
+            </summary>
+        </member>
+        <member name="F:QuikSharp.YesOrNo.NO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuikSharp.YesOrNo.YES">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QuikSharp.YesOrNoDefault">
+            <summary>
+            YES or NO with NO default
+            </summary>
+        </member>
+        <member name="F:QuikSharp.YesOrNoDefault.NO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuikSharp.YesOrNoDefault.YES">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QuikSharp.TransactionOperation">
+            <summary>
+            Тип заявки, необязательный параметр.
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionOperation.B">
+            <summary>
+            «B» – купить
+            </summary>
+        </member>
+        <member name="F:QuikSharp.TransactionOperation.S">
+            <summary>
+            «S» – продать
+            </summary>
+        </member>
+        <member name="T:QuikSharp.ExecutionCondition">
+            <summary>
+            Условие исполнения заявки, необязательный параметр. Возможные значения:
+            </summary>
+        </member>
+        <member name="F:QuikSharp.ExecutionCondition.PUT_IN_QUEUE">
+            <summary>
+            «PUT_IN_QUEUE» – поставить в очередь (по умолчанию),
+            </summary>
+        </member>
+        <member name="F:QuikSharp.ExecutionCondition.FILL_OR_KILL">
+            <summary>
+            «FILL_OR_KILL» – немедленно или отклонить,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.ExecutionCondition.KILL_BALANCE">
+            <summary>
+            «KILL_BALANCE» – снять остаток
+            </summary>
+        </member>
+        <member name="T:QuikSharp.StopOrderKind">
+            <summary>
+            Тип стоп-заявки. Возможные значения:
+            Если параметр пропущен, то считается, что заявка имеет тип «стоп-лимит»
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderKind.SIMPLE_STOP_ORDER">
+            <summary>
+            стоп-лимит,
+            Если параметр пропущен, то считается, что заявка имеет тип «стоп-лимит»
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderKind.CONDITION_PRICE_BY_OTHER_SEC">
+            <summary>
+            с условием по другой бумаге,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderKind.WITH_LINKED_LIMIT_ORDER">
+            <summary>
+            со связанной заявкой,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderKind.TAKE_PROFIT_STOP_ORDER">
+            <summary>
+            тэйк-профит,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderKind.TAKE_PROFIT_AND_STOP_LIMIT_ORDER">
+            <summary>
+            тэйк-профит и стоп-лимит,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderKind.ACTIVATED_BY_ORDER_SIMPLE_STOP_ORDER">
+            <summary>
+            стоп-лимит по исполнению заявки,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderKind.ACTIVATED_BY_ORDER_TAKE_PROFIT_STOP_ORDER">
+            <summary>
+            тэйк-профит по исполнению заявки,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.StopOrderKind.ACTIVATED_BY_ORDER_TAKE_PROFIT_AND_STOP_LIMIT_ORDER">
+            <summary>
+            тэйк-профит и стоп-лимит по исполнению заявки.
+            </summary>
+        </member>
+        <member name="T:QuikSharp.ForAccount">
+            <summary>
+            Лицо, от имени которого и за чей счет регистрируется сделка 
+            (параметр внебиржевой сделки). Возможные значения:
+            </summary>
+        </member>
+        <member name="F:QuikSharp.ForAccount.OWNOWN">
+            <summary>
+            от своего имени, за свой счет,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.ForAccount.OWNCLI">
+            <summary>
+            от своего имени, за счет клиента,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.ForAccount.OWNDUP">
+            <summary>
+            от своего имени, за счет доверительного управления,
+            </summary>
+        </member>
+        <member name="F:QuikSharp.ForAccount.CLICLI">
+            <summary>
+            от имени клиента, за счет клиента
+            </summary>
+        </member>
+        <member name="T:QuikSharp.OffsetUnits">
+            <summary>
+            Единицы измерения отступа. Используется при «STOP_ORDER_KIND» = 
+            «TAKE_PROFIT_STOP_ORDER» или «ACTIVATED_BY_ORDER_TAKE_PROFIT_STOP_ORDER»
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OffsetUnits.PERCENTS">
+            <summary>
+            «PERCENTS» – в процентах (шаг изменения – одна сотая процента),
+            </summary>
+        </member>
+        <member name="F:QuikSharp.OffsetUnits.PRICE_UNITS">
+            <summary>
+            «PRICE_UNITS» – в параметрах цены (шаг изменения равен шагу цены по данному инструменту).
+            </summary>
+        </member>
+        <member name="T:QuikSharp.InfoParams">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.VERSION">
+            <summary>
+            Версия программы
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.TRADEDATE">
+            <summary>
+            Дата торгов
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.SERVERTIME">
+            <summary>
+            Время сервера
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.LASTRECORDTIME">
+            <summary>
+            Время последней записи
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.NUMRECORDS">
+            <summary>
+            Число записей
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.LASTRECORD">
+            <summary>
+            Последняя запись
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.LATERECORD">
+            <summary>
+            Отставшая запись
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.CONNECTION">
+            <summary>
+            Соединение
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.IPADDRESS">
+            <summary>
+            IP-адрес сервера
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.IPPORT">
+            <summary>
+            Порт сервера
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.IPCOMMENT">
+            <summary>
+            Описание соединения
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.SERVER">
+            <summary>
+            Описание сервера
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.SESSIONID">
+            <summary>
+            Идентификатор сессии
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.USER">
+            <summary>
+            Пользователь
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.USERID">
+            <summary>
+            ID пользователя
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.ORG">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.MEMORY">
+            <summary>
+            Занято памяти
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.LOCALTIME">
+            <summary>
+            Текущее время
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.CONNECTIONTIME">
+            <summary>
+            Время на связи
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.MESSAGESSENT">
+            <summary>
+            Передано сообщений
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.ALLSENT">
+            <summary>
+            Передано всего байт
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.BYTESSENT">
+            <summary>
+            Передано полезных байт
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.BYTESPERSECSENT">
+            <summary>
+            Передано за секунду
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.MESSAGESRECV">
+            <summary>
+            Принято сообщений
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.BYTESRECV">
+            <summary>
+            Принято полезных байт
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.ALLRECV">
+            <summary>
+            Принято всего байт
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.BYTESPERSECRECV">
+            <summary>
+            Принято за секунду
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.AVGSENT">
+            <summary>
+            Средняя скорость передачи
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.AVGRECV">
+            <summary>
+            Средняя скорость приема
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.LASTPINGTIME">
+            <summary>
+            Время последней проверки связи
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.LASTPINGDURATION">
+            <summary>
+            Задержка данных при обмене с сервером
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.AVGPINGDURATION">
+            <summary>
+            Средняя задержка данных
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.MAXPINGTIME">
+            <summary>
+            Время максимальной задержки
+            </summary>
+        </member>
+        <member name="F:QuikSharp.InfoParams.MAXPINGDURATION">
+            <summary>
+            Максимальная задержка данных
+            </summary>
+        </member>
+        <member name="T:QuikSharp.IQuikService">
+            <summary>
+            A marker interface for all classes that implement Quik functions (grouped by QLUA.chm manual)
+            .NET interface to QLUA API. Calling the members from .NET is the same as calling 
+            them from QLUA inside QUIK
+            </summary>
+        </member>
+        <member name="T:QuikSharp.IQuikEvents">
+            <summary>
+            Implements all Quik callback functions to be processed on .NET side.
+            These functions are called by Quik inside QLUA.
+            
+            Ôóíêöèè îáðàòíîãî âûçîâà
+            Ôóíêöèè âûçûâàþòñÿ ïðè ïîëó÷åíèè ñëåäóþùèõ äàííûõ èëè ñîáûòèé òåðìèíàëîì QUIK îò ñåðâåðà: 
+            main - ðåàëèçàöèÿ îñíîâíîãî ïîòîêà èñïîëíåíèÿ â ñêðèïòå 
+            OnAccountBalance - èçìåíåíèå ïîçèöèè ïî ñ÷åòó 
+            OnAccountPosition - èçìåíåíèå ïîçèöèè ïî ñ÷åòó 
+            OnAllTrade - íîâàÿ îáåçëè÷åííàÿ ñäåëêà 
+            OnCleanUp - ñìåíà òîðãîâîé ñåññèè è ïðè âûãðóçêå ôàéëà qlua.dll 
+            OnClose - çàêðûòèå òåðìèíàëà QUIK 
+            OnConnected - óñòàíîâëåíèå ñâÿçè ñ ñåðâåðîì QUIK 
+            OnDepoLimit - èçìåíåíèå áóìàæíîãî ëèìèòà 
+            OnDepoLimitDelete - óäàëåíèå áóìàæíîãî ëèìèòà 
+            OnDisconnected - îòêëþ÷åíèå îò ñåðâåðà QUIK 
+            OnFirm - îïèñàíèå íîâîé ôèðìû 
+            OnFuturesClientHolding - èçìåíåíèå ïîçèöèè ïî ñðî÷íîìó ðûíêó 
+            OnFuturesLimitChange - èçìåíåíèå îãðàíè÷åíèé ïî ñðî÷íîìó ðûíêó 
+            OnFuturesLimitDelete - óäàëåíèå ëèìèòà ïî ñðî÷íîìó ðûíêó 
+            OnInit - èíèöèàëèçàöèÿ ôóíêöèè main 
+            OnMoneyLimit - èçìåíåíèå äåíåæíîãî ëèìèòà 
+            OnMoneyLimitDelete - óäàëåíèå äåíåæíîãî ëèìèòà 
+            OnNegDeal - íîâàÿ çàÿâêà íà âíåáèðæåâóþ ñäåëêó 
+            OnNegTrade - íîâàÿ ñäåëêà äëÿ èñïîëíåíèÿ 
+            OnOrder - íîâàÿ çàÿâêà èëè èçìåíåíèå ïàðàìåòðîâ ñóùåñòâóþùåé çàÿâêè 
+            OnParam - èçìåíåíèå òåêóùèõ ïàðàìåòðîâ 
+            OnQuote - èçìåíåíèå ñòàêàíà êîòèðîâîê 
+            OnStop - îñòàíîâêà ñêðèïòà èç äèàëîãà óïðàâëåíèÿ 
+            OnStopOrder - íîâàÿ ñòîï-çàÿâêà èëè èçìåíåíèå ïàðàìåòðîâ ñóùåñòâóþùåé ñòîï-çàÿâêè 
+            OnTrade - íîâàÿ ñäåëêà 
+            OnTransReply - îòâåò íà òðàíçàêöèþ 
+            </summary>
+        </member>
+        <member name="E:QuikSharp.IQuikEvents.OnAllTrade">
+            <summary>
+            Íîâàÿ îáåçëè÷åííàÿ ñäåëêà
+            </summary>
+        </member>
+        <member name="E:QuikSharp.IQuikEvents.OnClose">
+            <summary>
+            Ôóíêöèÿ âûçûâàåòñÿ ïåðåä çàêðûòèåì òåðìèíàëà QUIK. 
+            </summary>
+        </member>
+        <member name="E:QuikSharp.IQuikEvents.OnInit">
+            <summary>
+            Ôóíêöèÿ âûçûâàåòñÿ òåðìèíàëîì QUIK ïåðåä âûçîâîì ôóíêöèè main(). Â êà÷åñòâå ïàðàìåòðà ïðèíèìàåò çíà÷åíèå ïîëíîãî ïóòè ê çàïóñêàåìîìó ñêðèïòó. 
+            Ïðèìå÷àíèå: Â äàííîé ôóíêöèè ïîëüçîâàòåëü èìååò âîçìîæíîñòü èíèöèàëèçèðîâàòü âñå íåîáõîäèìûå ïåðåìåííûå è áèáëèîòåêè ïåðåä çàïóñêîì îñíîâíîãî ïîòîêà main()
+            </summary>
+        </member>
+        <member name="E:QuikSharp.IQuikEvents.OnStop">
+            <summary>
+            Ôóíêöèÿ âûçûâàåòñÿ òåðìèíàëîì QUIK ïðè îñòàíîâêå ñêðèïòà èç äèàëîãà óïðàâëåíèÿ. 
+            Ïðèìå÷àíèå: Çíà÷åíèå ïàðàìåòðà «stop_flag» – «1».Ïîñëå îêîí÷àíèÿ âûïîëíåíèÿ ôóíêöèè òàéìàóò çàâåðøåíèÿ ðàáîòû ñêðèïòà 5 ñåêóíä. Ïî èñòå÷åíèè ýòîãî èíòåðâàëà ôóíêöèÿ main() çàâåðøàåòñÿ ïðèíóäèòåëüíî. Ïðè ýòîì âîçìîæíà ïîòåðÿ ñèñòåìíûõ ðåñóðñîâ.
+            </summary>
+        </member>
+    </members>
+</doc>
