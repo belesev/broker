@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using QuikSharp;
 
 namespace Broker01
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             var quik = new Quik(Quik.DefaultPort, new InMemoryStorage());    // инициализируем объект Quik
             var isServerConnected = quik.Service.IsConnected().Result;
+            Console.WriteLine("This line is not going to be written");
         }
     }
 }
