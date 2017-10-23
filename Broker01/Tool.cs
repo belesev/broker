@@ -1,9 +1,10 @@
 ﻿using System;
+using BrokerAlgo.Interfaces;
 using QuikSharp;
 
-namespace Broker01
+namespace BrokerAlgo
 {
-    public class Tool
+    public class Tool : ITool
     {
         Char separator = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0];
 

@@ -17,3 +17,17 @@ C:\Users\Хозяин\source\repos\Broker01\Broker01\obj\Release\Broker01.csproj
 C:\Users\Хозяин\source\repos\Broker01\Broker01\obj\Release\Broker01.csproj.CoreCompileInputs.cache
 C:\Users\Хозяин\source\repos\Broker01\Broker01\obj\Release\Broker01.exe
 C:\Users\Хозяин\source\repos\Broker01\Broker01\obj\Release\Broker01.pdb
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\Broker01.exe.config
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\Broker01.exe
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\Broker01.pdb
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\Newtonsoft.Json.dll
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\QUIKSharp.dll
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\System.Buffers.dll
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\Newtonsoft.Json.xml
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\QUIKSharp.pdb
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\QUIKSharp.xml
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Release\QUIKSharp.dll.config
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\obj\Release\Broker01.csprojResolveAssemblyReference.cache
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\obj\Release\Broker01.csproj.CoreCompileInputs.cache
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\obj\Release\Broker01.exe
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\obj\Release\Broker01.pdb

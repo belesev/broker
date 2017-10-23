@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml;
 
-namespace Broker01
+namespace BrokerAlgo
 {
     public class XmlConfigReader
     {

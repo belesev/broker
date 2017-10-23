@@ -2,7 +2,7 @@
 using log4net;
 using log4net.Config;
 
-namespace Broker01
+namespace BrokerAlgo
 {
     public static class Logger
     {

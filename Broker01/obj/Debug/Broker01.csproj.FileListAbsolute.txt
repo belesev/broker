@@ -16,3 +16,19 @@ C:\Users\Хозяин\source\repos\Broker01\Broker01\bin\Debug\QuikSharp.xml
 C:\Users\Хозяин\source\repos\Broker01\Broker01\obj\Debug\Broker01.csproj.CoreCompileInputs.cache
 C:\Users\Хозяин\source\repos\Broker01\Broker01\obj\Debug\Broker01.exe
 C:\Users\Хозяин\source\repos\Broker01\Broker01\obj\Debug\Broker01.pdb
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\Broker01.exe.config
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\Broker01.exe
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\Broker01.pdb
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\QuikSharp.dll
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\QuikSharp.pdb
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\obj\Debug\Broker01.csprojResolveAssemblyReference.cache
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\obj\Debug\Broker01.csproj.CoreCompileInputs.cache
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\obj\Debug\Broker01.exe
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\obj\Debug\Broker01.pdb
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\System.Buffers.dll
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\QUIKSharp.xml
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\QUIKSharp.dll.config
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\log4net.dll
+C:\Users\Sergey\Documents\Visual Studio 2013\Projects\broker\Broker01\bin\Debug\log4net.xml
