@@ -39,6 +39,9 @@
     <Reference Include="Common.Logging.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -58,16 +61,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Consts.cs" />
+    <Compile Include="Entities\DealAll.cs" />
+    <Compile Include="Entities\DealAmount.cs" />
+    <Compile Include="Entities\DealType.cs" />
+    <Compile Include="Entities\PricesBundle.cs" />
+    <Compile Include="Helpers\MathHelper.cs" />
+    <Compile Include="Interfaces\IAccountService.cs" />
+    <Compile Include="Interfaces\IPriceService.cs" />
+    <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\Engine.cs" />
-    <Compile Include="Interfaces\IAction.cs" />
+    <Compile Include="Interfaces\IDeal.cs" />
     <Compile Include="Interfaces\IEngine.cs" />
     <Compile Include="Interfaces\IStrategy.cs" />
     <Compile Include="Interfaces\ITool.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\StrategyBreakThrough.cs" />
-    <Compile Include="Tool.cs" />
+    <Compile Include="Services\PriceService.cs" />
+    <Compile Include="Strategies\FixIncomeStrategy.cs" />
+    <Compile Include="Strategies\StrategyBreakThrough.cs" />
+    <Compile Include="Entities\Tool.cs" />
+    <Compile Include="Entities\ToolCode.cs" />
     <Compile Include="XmlConfigReader.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,15 +91,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\instruments.xml">
+    <Content Include="Config\Business\FixIncome.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Business\Instruments.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\Spring.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

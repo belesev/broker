@@ -1,10 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <objects xmlns="http://www.springframework.net">
-  <object id="strategyBreakThrough" type="BrokerAlgo.Services.StrategyBreakThrough, BrokerAlgo"/>
+
+  <object id="inMemoryStorage" type="QuikSharp.InMemoryStorage, QuikSharp" />
+
+  <object id="quik" type="QuikSharp.Quik, QuikSharp">
+    <constructor-arg name="port" value="34130"/>
+    <constructor-arg name="storage" ref="inMemoryStorage"/>
+  </object>
+
+  <object id="priceService" type="BrokerAlgo.Services.PriceService, BrokerAlgo">
+    <constructor-arg name="quik" ref="quik"/>
+  </object>
+  
+  <object id="accountService" type="BrokerAlgo.Services.AccountService, BrokerAlgo">
+    <constructor-arg name="quik" ref="quik"/>
+    <constructor-arg name="clientCode" value="145897I"/>
+  </object>
+
+  <object id="strategyBreakThrough" type="BrokerAlgo.Strategies.StrategyBreakThrough, BrokerAlgo">
+    <constructor-arg name="breakThroughPercent" value="5"/>
+    <constructor-arg name="priceService" ref="priceService"/>
+    <constructor-arg name="interval" value="M1"/>
+    <constructor-arg name="count" value="60"/>
+    <constructor-arg name="moneyMaxAmount" value="1000"/>
+    <constructor-arg name="corridorPercent" value="5"/>
+  </object>
+
+  <object id="fixIncomeStrategy" type="BrokerAlgo.Strategies.FixIncomeStrategy, BrokerAlgo">
+    <constructor-arg name="priceService" ref="priceService"/>
+  </object>
 
   <object id="engine" type="BrokerAlgo.Services.Engine, BrokerAlgo">
-    <constructor-arg name="strategies">
+      <constructor-arg name="quik" ref="quik"/>
+      <constructor-arg name="strategies">
       <list>
         <ref object="strategyBreakThrough"/>
       </list>

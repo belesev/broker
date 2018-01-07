@@ -1,11 +1,12 @@
-﻿using QuikSharp.DataStructures;
-using System.Collections.Generic;
+﻿using BrokerAlgo.Entities;
+using JetBrains.Annotations;
+using QuikSharp;
 
 namespace BrokerAlgo.Interfaces
 {
     public interface IStrategy
     {
-        bool IsFit(ITool tool);
-        void Process(IList<Candle> lastPrices);
+        [CanBeNull]
+        IDeal GetDeal(Quik quik, ToolCode toolCode);
     }
 }
