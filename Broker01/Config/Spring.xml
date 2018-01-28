@@ -22,9 +22,8 @@
     <constructor-arg name="breakThroughPercent" value="5"/>
     <constructor-arg name="priceService" ref="priceService"/>
     <constructor-arg name="interval" value="M1"/>
-    <constructor-arg name="count" value="60"/>
+    <constructor-arg name="candlesCount" value="60"/>
     <constructor-arg name="moneyMaxAmount" value="1000"/>
-    <constructor-arg name="corridorPercent" value="5"/>
   </object>
 
   <object id="fixIncomeStrategy" type="BrokerAlgo.Strategies.FixIncomeStrategy, BrokerAlgo">

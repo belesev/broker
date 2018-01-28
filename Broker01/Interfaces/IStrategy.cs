@@ -1,12 +1,11 @@
-﻿using BrokerAlgo.Entities;
-using JetBrains.Annotations;
-using QuikSharp;
+﻿using JetBrains.Annotations;
+using System.Collections.Generic;
 
 namespace BrokerAlgo.Interfaces
 {
     public interface IStrategy
     {
         [CanBeNull]
-        IDeal GetDeal(Quik quik, ToolCode toolCode);
+        IList<IDeal> GetDeals(ITool tool);
     }
 }

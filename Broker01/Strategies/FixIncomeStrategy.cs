@@ -1,8 +1,7 @@
-﻿using System;
-using BrokerAlgo.Entities;
+﻿using BrokerAlgo.Entities;
 using BrokerAlgo.Interfaces;
 using JetBrains.Annotations;
-using QuikSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,12 +19,11 @@ namespace BrokerAlgo.Strategies
             fixPrices = new XmlConfigReader("Config\\Business\\FixIncome.xml").ReadDictionary<string, double>("key").ToDictionary(p => p.Key, p => Convert.ToDecimal(p.Value));
         }
 
-        public IDeal GetDeal(Quik quik, ToolCode toolCode)
+        public IList<IDeal> GetDeals(ITool tool)
         {
-            var tool = new Tool(quik, toolCode.Code);
             var lastPrice = priceService.LastPrice(tool);
             if (fixPrices.TryGetValue(tool.ClassCode, out var fixPrice) && lastPrice >= fixPrice)
-                return new DealAll(DealType.Sell, tool);
+                return new List<IDeal> { new DealAll(DealType.Sell, tool, new List<IDeal>()) };
             return null;
         }
     }

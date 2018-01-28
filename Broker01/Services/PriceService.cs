@@ -1,8 +1,8 @@
-﻿using BrokerAlgo.Entities;
+﻿using System;
+using BrokerAlgo.Entities;
 using BrokerAlgo.Interfaces;
 using QuikSharp;
 using QuikSharp.DataStructures;
-using System;
 
 namespace BrokerAlgo.Services
 {

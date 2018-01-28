@@ -22,14 +22,14 @@ namespace BrokerAlgo.Services
 
         public void Exec()
         {
-            var deals = new List<IDeal>();
+            var allDeals = new List<IDeal>();
             foreach (var strategy in strategies)
             {
                 foreach (var toolCode in instruments.Select(i => new ToolCode(i)))
                 {
-                    var deal = strategy.GetDeal(quik, toolCode);
-                    if (deal != null)
-                        deals.Add(deal);
+                    var deals = strategy.GetDeals(new Tool(quik, toolCode.Code));
+                    if (deals != null)
+                        allDeals.AddRange(deals);
                 }
             }
             // TODO notify by email

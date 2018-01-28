@@ -66,10 +66,18 @@
     <Compile Include="Entities\DealAmount.cs" />
     <Compile Include="Entities\DealType.cs" />
     <Compile Include="Entities\PricesBundle.cs" />
+    <Compile Include="Helpers\Const.cs" />
+    <Compile Include="Helpers\EnumerableExtensions.cs" />
+    <Compile Include="Helpers\EnumExtensions.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
+    <Compile Include="Interfaces\IPriceToFileLoader.cs" />
+    <Compile Include="Services\PriceFromFileLoader.cs" />
+    <Compile Include="Services\PriceToFileLoader.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Interfaces\IPriceService.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\PriceService.cs" />
     <Compile Include="Services\Engine.cs" />
     <Compile Include="Interfaces\IDeal.cs" />
     <Compile Include="Interfaces\IEngine.cs" />
@@ -78,7 +86,6 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\PriceService.cs" />
     <Compile Include="Strategies\FixIncomeStrategy.cs" />
     <Compile Include="Strategies\StrategyBreakThrough.cs" />
     <Compile Include="Entities\Tool.cs" />
