@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using BrokerAlgo.Entities;
+using BrokerAlgo.Helpers;
 using BrokerAlgo.Interfaces;
 using BrokerAlgo.Services;
-using BrokerAlgo.Strategies;
 using QuikSharp;
 using QuikSharp.DataStructures;
 using Spring.Context;
@@ -12,7 +13,7 @@ namespace BrokerAlgo
 {
     internal class Program
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
             Logger.InitLogger();
             ContextRegistry.RegisterContext(new XmlApplicationContext("Config\\Spring.xml"));
@@ -28,11 +29,19 @@ namespace BrokerAlgo
             }
             Logger.Log.Info("Connected to QUIK successfully");
 
-            var tool = new Tool(quik, "AFKS");
-            var priceService = (IPriceService)ctx.GetObject("priceService");
+            if (args.Length > 2 && args[0].ToLower() == "-f")
+            {
+                // -f LSNGP H4
+                var toolcode = args[1];
+                var interval = args[2].Parse<CandleInterval>();
+                var dateStart = DateTime.ParseExact(args[3], "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-            var ptfs = new PriceToFileLoader(tool, priceService, CandleInterval.M15, new DateTime(2017,12,1), DateTime.Now);
-            ptfs.Save();
+                var tool = new Tool(quik, toolcode);
+                var priceService = (IPriceService)ctx.GetObject("priceService");
+
+                var ptfs = new PriceToFileLoader(tool, priceService, interval, dateStart, DateTime.Now);
+                ptfs.Save();
+            }
 
             //var prices1000 = priceService.GetLastPrices(tool, CandleInterval.H1, 1000);
             //var pricesAll = priceService.GetAllPrices(tool, CandleInterval.H1);

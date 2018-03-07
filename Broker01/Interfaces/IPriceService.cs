@@ -3,7 +3,7 @@ using QuikSharp.DataStructures;
 
 namespace BrokerAlgo.Interfaces
 {
-    interface IPriceService
+    internal interface IPriceService
     {
         PricesBundle GetLastPrices(ITool tool, CandleInterval candleInterval, int intervalsCount);
 

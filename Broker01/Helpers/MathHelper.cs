@@ -6,6 +6,9 @@ namespace BrokerAlgo.Helpers
 {
     public static class MathHelper
     {
+        /// <param name="value">Начальное значение</param>
+        /// <param name="percent">(0..100]</param>
+        /// <returns></returns>
         public static decimal AddPercent(this decimal value, decimal percent)
         {
             if (percent <= 0)

@@ -3,6 +3,7 @@
     public enum DealType
     {
         Buy = 1,
-        Sell = 2,
+        SellTakeProfit = 2,
+        SellStopLoss = 3,
     }
 }

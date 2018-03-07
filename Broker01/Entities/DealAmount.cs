@@ -6,26 +6,25 @@ namespace BrokerAlgo.Entities
 {
     class DealAmount : IDeal
     {
-        private readonly int lotsAmount;
-
-        public DealAmount(DealType type, int lotsAmount, ITool tool, IList<IDeal> linkedDeals)
+        public DealAmount(DealType type, decimal dealPrice, int lotsAmount, ITool tool, IList<IDeal> linkedDeals)
         {
             if (lotsAmount <= 0)
                 throw new ArgumentOutOfRangeException(nameof(lotsAmount));
 
             Type = type;
-            this.lotsAmount = lotsAmount;
+            DealPrice = dealPrice;
+            this.LotsAmount = lotsAmount;
             Tool = tool;
             LinkedDeals = linkedDeals;
         }
 
         public ITool Tool { get; }
+
         public DealType Type { get; }
 
-        public int LotsAmount(IAccountService accountService)
-        {
-            return lotsAmount;
-        }
+        public decimal DealPrice { get; }
+
+        public int LotsAmount { get; }
 
         public IList<IDeal> LinkedDeals { get; }
     }

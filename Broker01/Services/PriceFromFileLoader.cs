@@ -18,10 +18,9 @@ namespace BrokerAlgo.Services
         private CandleInterval candleInterval;
         private int currentRow = 1;
 
-        public PriceFromFileLoader(ITool tool, CandleInterval candleInterval, string filename)
+        public PriceFromFileLoader(ITool tool, string filename)
         {
             this.tool = tool;
-            this.candleInterval = candleInterval;
             this.path = $"{FileHelper.GetAppdataFolder()}\\{filename}";
 
             prices = new Lazy<List<Candle>>(ReadFile);
@@ -32,9 +31,9 @@ namespace BrokerAlgo.Services
             var lines = File.ReadAllLines(path);
 
             var main = lines[0].Split(';');
-            var headers = lines[1].Split(';');
-
             candleInterval = main[1].Parse<CandleInterval>();
+
+            var headers = lines[1].Split(';');
 
             var closePos = Array.IndexOf(headers, Const.Close);
             var openPos = Array.IndexOf(headers, Const.Open);
@@ -66,6 +65,8 @@ namespace BrokerAlgo.Services
 
         public PricesBundle GetLastPrices(ITool tool, CandleInterval candleInterval, int intervalsCount)
         {
+            GetPrices();
+
             if (tool != this.tool)
                 throw new ArgumentException(nameof(tool));
             if (candleInterval != this.candleInterval)
@@ -75,6 +76,8 @@ namespace BrokerAlgo.Services
 
         public PricesBundle GetAllPrices(ITool tool, CandleInterval candleInterval)
         {
+            
+
             if (tool != this.tool)
                 throw new ArgumentException(nameof(tool));
             if (candleInterval != this.candleInterval)
@@ -91,6 +94,11 @@ namespace BrokerAlgo.Services
         {
             currentRow += shiftAmount;
             return currentRow <= prices.Value.Count;
+        }
+
+        public QuikDateTime GetCurrentDate()
+        {
+            return GetPrices().Last().Datetime;
         }
 
         private IEnumerable<Candle> GetPrices()

@@ -1,6 +1,5 @@
 ﻿using System;
 using BrokerAlgo.Interfaces;
-using BrokerAlgo.Services;
 using QuikSharp;
 
 namespace BrokerAlgo.Entities
@@ -137,6 +136,24 @@ namespace BrokerAlgo.Entities
             {
                 Logger.Log.Error("Ошибка в методе GetBaseParam: " + e.Message);
             }
+        }
+
+        protected bool Equals(Tool other)
+        {
+            return string.Equals(SecurityCode, other.SecurityCode);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Tool) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (SecurityCode != null ? SecurityCode.GetHashCode() : 0);
         }
     }
 }

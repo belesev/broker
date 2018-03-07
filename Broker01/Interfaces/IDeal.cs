@@ -16,9 +16,14 @@ namespace BrokerAlgo.Interfaces
         DealType Type { get; }
 
         /// <summary>
-        /// Метод расчёта количества покупки, исходя из состояния счёта.
+        /// Цена сделки.
         /// </summary>
-        int LotsAmount(IAccountService accountService);
+        decimal DealPrice { get; }
+
+        /// <summary>
+        /// Количество лотов для покупки/продажи.
+        /// </summary>
+        int LotsAmount { get; }
 
         /// <summary>
         /// Связанные заявки, то есть такие, которые надо выставить, если сработает текущая.

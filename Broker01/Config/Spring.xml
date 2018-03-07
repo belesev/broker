@@ -24,6 +24,8 @@
     <constructor-arg name="interval" value="M1"/>
     <constructor-arg name="candlesCount" value="60"/>
     <constructor-arg name="moneyMaxAmount" value="1000"/>
+    <constructor-arg name="takeProfitPercent" value="5"/>
+    <constructor-arg name="stopLossPercent" value="2"/>
   </object>
 
   <object id="fixIncomeStrategy" type="BrokerAlgo.Strategies.FixIncomeStrategy, BrokerAlgo">

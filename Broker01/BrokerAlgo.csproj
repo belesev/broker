@@ -62,11 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Consts.cs" />
-    <Compile Include="Entities\DealAll.cs" />
     <Compile Include="Entities\DealAmount.cs" />
     <Compile Include="Entities\DealType.cs" />
     <Compile Include="Entities\PricesBundle.cs" />
     <Compile Include="Helpers\Const.cs" />
+    <Compile Include="Helpers\DictionaryHelper.cs" />
+    <Compile Include="Helpers\EmailSender.cs" />
     <Compile Include="Helpers\EnumerableExtensions.cs" />
     <Compile Include="Helpers\EnumExtensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />

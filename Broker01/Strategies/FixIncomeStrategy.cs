@@ -22,9 +22,10 @@ namespace BrokerAlgo.Strategies
         public IList<IDeal> GetDeals(ITool tool)
         {
             var lastPrice = priceService.LastPrice(tool);
-            if (fixPrices.TryGetValue(tool.ClassCode, out var fixPrice) && lastPrice >= fixPrice)
-                return new List<IDeal> { new DealAll(DealType.Sell, tool, new List<IDeal>()) };
-            return null;
+            throw new NotImplementedException();
+            //if (fixPrices.TryGetValue(tool.ClassCode, out var fixPrice) && lastPrice >= fixPrice)
+            //    return new List<IDeal> { new DealAll(DealType.Sell, tool, new List<IDeal>()) };
+            //return null;
         }
     }
 }
