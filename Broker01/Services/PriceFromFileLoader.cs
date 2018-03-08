@@ -1,12 +1,12 @@
-﻿using BrokerAlgo.Entities;
-using BrokerAlgo.Helpers;
-using BrokerAlgo.Interfaces;
-using QuikSharp.DataStructures;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using BrokerAlgo.Entities;
+using BrokerAlgo.Helpers;
+using BrokerAlgo.Interfaces;
+using QuikSharp.DataStructures;
 
 namespace BrokerAlgo.Services
 {
@@ -15,7 +15,7 @@ namespace BrokerAlgo.Services
         private readonly ITool tool;
         private readonly string path;
         private readonly Lazy<List<Candle>> prices;
-        private CandleInterval candleInterval;
+        private CandleInterval fileCandleInterval;
         private int currentRow = 1;
 
         public PriceFromFileLoader(ITool tool, string filename)
@@ -31,7 +31,7 @@ namespace BrokerAlgo.Services
             var lines = File.ReadAllLines(path);
 
             var main = lines[0].Split(';');
-            candleInterval = main[1].Parse<CandleInterval>();
+            fileCandleInterval = main[1].Parse<CandleInterval>();
 
             var headers = lines[1].Split(';');
 
@@ -56,7 +56,7 @@ namespace BrokerAlgo.Services
                     Datetime = (QuikDateTime) DateTime.ParseExact(splitted[dateTimePos], Const.DateTimeFormat,
                         CultureInfo.InvariantCulture),
                     Volume = int.Parse(splitted[volumePos]),
-                    Interval = candleInterval,
+                    Interval = fileCandleInterval,
                     SecCode = tool.SecurityCode,
                 });
             }
@@ -67,21 +67,15 @@ namespace BrokerAlgo.Services
         {
             GetPrices();
 
-            if (tool != this.tool)
+            if (!tool.Equals(this.tool))
                 throw new ArgumentException(nameof(tool));
-            if (candleInterval != this.candleInterval)
-                throw new ArgumentException(nameof(candleInterval));
             return new PricesBundle(candleInterval, intervalsCount, GetPrices());
         }
 
         public PricesBundle GetAllPrices(ITool tool, CandleInterval candleInterval)
         {
-            
-
-            if (tool != this.tool)
+            if (!tool.Equals(this.tool))
                 throw new ArgumentException(nameof(tool));
-            if (candleInterval != this.candleInterval)
-                throw new ArgumentException(nameof(candleInterval));
             return new PricesBundle(candleInterval, null, GetPrices());
         }
 
@@ -90,9 +84,28 @@ namespace BrokerAlgo.Services
             return GetPrices().Last().Close;
         }
 
+        /// <summary>
+        /// Сдвигает указатель на следующую строку (имитирует наступление следующего тайм-фрейма).
+        /// </summary>
         public bool ShiftPointer(int shiftAmount = 1)
         {
             currentRow += shiftAmount;
+            return currentRow <= prices.Value.Count;
+        }
+
+        /// <summary>
+        /// Сдвигает указатель на следующую строку (имитирует наступление следующего тайм-фрейма).
+        /// </summary>
+        public bool ShiftPointer(CandleInterval shiftInterval)
+        {
+            if (shiftInterval < fileCandleInterval)
+                throw new InvalidOperationException($"Impossible to shift for {shiftInterval} while file contains time interval {fileCandleInterval}: too small shift");
+            if ((int)shiftInterval % (int)fileCandleInterval != 0)
+                throw new InvalidOperationException($"Impossible to shift for {shiftInterval}: it's not divisible by file time interval {fileCandleInterval}");
+
+            var shiftRows = (int)shiftInterval / (int)fileCandleInterval;
+
+            currentRow += shiftRows;
             return currentRow <= prices.Value.Count;
         }
 

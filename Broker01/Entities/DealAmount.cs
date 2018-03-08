@@ -1,6 +1,6 @@
-﻿using BrokerAlgo.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using BrokerAlgo.Interfaces;
 
 namespace BrokerAlgo.Entities
 {
@@ -27,5 +27,10 @@ namespace BrokerAlgo.Entities
         public int LotsAmount { get; }
 
         public IList<IDeal> LinkedDeals { get; }
+
+        public override string ToString()
+        {
+            return $"{Tool.SecurityCode}: {Type:G}, ({LotsAmount} lots * {Tool.Lot}), {DealPrice}";
+        }
     }
 }

@@ -42,8 +42,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="CurrentTime.cs" />
     <Compile Include="DealProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup.cs" />
     <Compile Include="TestEmailSender.cs" />
     <Compile Include="TestStrategyBreakThrough.cs" />
     <Compile Include="TestTool.cs" />

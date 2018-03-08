@@ -30,5 +30,7 @@ namespace BrokerAlgo.Interfaces
         /// Например, TakeProfit и/или StopLoss.
         /// </summary>
         IList<IDeal> LinkedDeals { get; }
+
+        string ToString();
     }
 }

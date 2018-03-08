@@ -32,7 +32,5 @@ namespace BrokerAlgo.Services
         {
             return Convert.ToDecimal(quik.Trading.GetParamEx(tool.ClassCode, tool.SecurityCode, "LAST").Result.ParamValue.Replace('.', separator));
         }
-
-        //var toolCandles = quik.Candles.GetAllCandles(tool.ClassCode, tool.SecurityCode, CandleInterval.H1).Result;
     }
 }

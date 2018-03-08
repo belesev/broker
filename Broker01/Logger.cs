@@ -13,9 +13,9 @@ namespace BrokerAlgo
             get { return log; }
         }
 
-        public static void InitLogger()
+        public static void InitLogger(FileInfo file)
         {
-            XmlConfigurator.Configure(new FileInfo("..\\..\\Config\\log4net.config"));
+            XmlConfigurator.Configure(file);
         }
     }
 }

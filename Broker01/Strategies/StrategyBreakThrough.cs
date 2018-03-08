@@ -1,11 +1,11 @@
-﻿using BrokerAlgo.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BrokerAlgo.Entities;
 using BrokerAlgo.Helpers;
 using BrokerAlgo.Interfaces;
 using JetBrains.Annotations;
 using QuikSharp.DataStructures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BrokerAlgo.Strategies
 {
@@ -68,7 +68,7 @@ namespace BrokerAlgo.Strategies
 
             if (!isBreakThrough)
             {
-                Logger.Log.Debug($"StrategyBreakThrough for {tool} is not breakthrough: {pricesBundle.ToString(c => c.High)}, upBorder={upBorder}");
+                //Logger.Log.Debug($"StrategyBreakThrough for {tool} is not breakthrough: {pricesBundle.ToString(c => c.High)}, upBorder={upBorder}");
                 return null;
             }
 
@@ -84,5 +84,7 @@ namespace BrokerAlgo.Strategies
                 new DealAmount(DealType.Buy, lastPrice, lotsAmount, tool, new List<IDeal> {takeProfitDeal, stopLossDeal})
             };
         }
+
+        public CandleInterval Interval => interval;
     }
 }

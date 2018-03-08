@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using BrokerAlgo.Entities;
 using BrokerAlgo.Helpers;
 using BrokerAlgo.Interfaces;
@@ -15,13 +16,14 @@ namespace BrokerAlgo
     {
         public static void Main(string[] args)
         {
-            Logger.InitLogger();
+            Logger.InitLogger(new FileInfo(".\\Config\\log4net.config"));
             ContextRegistry.RegisterContext(new XmlApplicationContext("Config\\Spring.xml"));
 
             IApplicationContext ctx = ContextRegistry.GetContext();
 
             var quik = (Quik)ctx.GetObject("quik");
-            var isServerConnected = quik.Service.IsConnected().Result;
+            var isConnectedTask = quik.Service.IsConnected();
+            var isServerConnected = isConnectedTask.Result;
             if (!isServerConnected)
             {
                 Logger.Log.Error("Cannot connect to QUIK");
